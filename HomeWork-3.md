@@ -16,7 +16,7 @@
 	`sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску`  
 
 5. Монтируем новую партицию в <b>/mnt/data</b>, вносим изменения в <b>/etc/fstab</b> (<i>LABEL=otusdisk2 /mnt/data ext4 defaults 0 2</i>) и делаем владельцем пользователя postgres:  
-	![mount new disk](OTUS-Postgresql/1_mount_disk.PNG)
+	![mount new disk](1_mount_disk.PNG)
 
 6. Останавливаем службу postgresql и переносим (<b>mv</b>) директорию с данными (<i>/var/lib/postgresql/12/main</i>) на новый диск (в <i>/mnt/data/</i>):  
 	2_stop_DB.PNG
