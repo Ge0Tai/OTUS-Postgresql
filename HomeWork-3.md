@@ -7,7 +7,7 @@
 	`sudo apt-get update`  
 	`sudo apt-get install parted`  
 
-3. Командой sudo parted -l | grep Error находим неопознаный диск в системе. В нашем случае это будет sdb:  
+3. Командой <b>sudo parted -l | grep Error</b> находим неопознаный диск в системе. В нашем случае это будет sdb:  
 	
 	`Error: /dev/sdb: unrecognised disk label`
 
