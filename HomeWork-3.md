@@ -3,19 +3,20 @@
 1. Создаём новый ssd диск на 10 Гб. и добавляем (attach) к нашей VM.
 
 2. Для лёгкого и простого монтирования диска к виртуальной машине, устанавливает необходимый инструмент:  
-	sudo apt-get update  
-	sudo apt-get install parted  
+	`sudo apt-get update`  
+	`sudo apt-get install parted`  
 
 3. Командой sudo parted -l | grep Error находим неопознаный диск в системе. В нашем случае это будет sdb:  
-	Error: /dev/sdb: unrecognised disk label
+	`Error: /dev/sdb: unrecognised disk label`
 
 4. Теперь необходимо новый диск отформатировать и примонтировать его к нашей системе:  
-	sudo parted /dev/sdb mklabel gpt   //выбрали стандарт разметки  
-	sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%  //создаём новую партицию (sdb1) на новом диске  
-	sudo mkfs.ext4 -L datapartition /dev/sdb1 //форматируем созданную партицию в ФС ext4  
-	sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску  
+	`sudo parted /dev/sdb mklabel gpt   //выбрали стандарт разметки`  
+	`sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%  //создаём новую партицию (sdb1) на новом диске`  
+	`sudo mkfs.ext4 -L datapartition /dev/sdb1 //форматируем созданную партицию в ФС ext4`  
+	`sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску`  
 
-5. Монтируем новую партицию в /mnt/data, вносим изменения в /etc/fstab (LABEL=otusdisk2 /mnt/data ext4 defaults 0 2) и делаем владельцем пользователя postgres:
+5. Монтируем новую партицию в /mnt/data, вносим изменения в /etc/fstab (LABEL=otusdisk2 /mnt/data ext4 defaults 0 2) и делаем владельцем пользователя postgres:  
+	
 	1_mount_disk.PNG
 
 6. Останавливаем службу postgresql и переносим (mv) директорию с данными (/var/lib/postgresql/12/main) на новый диск (в /mnt/data/):
@@ -49,9 +50,9 @@
 	9_atachch_disk_VM2.PNG
 
 13. Создаём точку монтирования, монтируем приатаченный диск с даннымиБ делаем владельцем пользователя postgres и правим /etc/fstab:
-	# sudo mkdir -p /mnt/data
-	# sudo mount -o defaults /dev/sdb1 /mnt/data
-	# sudo mcedit /etc/fstab
+	sudo mkdir -p /mnt/data
+	sudo mount -o defaults /dev/sdb1 /mnt/data
+	sudo mcedit /etc/fstab
 	LABEL=otusdisk2 /mnt/data ext4 defaults 0 2
 	91_mount_disk_VM2.PNG
 	
