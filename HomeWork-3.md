@@ -1,17 +1,19 @@
+### Домашнее задание № 3 (Физический уровень PostgreSQL)
+
 1. Создаём новый ssd диск на 10 Гб. и добавляем (attach) к нашей VM.
 
-2. Для лёгкого и простого монтирования диска к виртуальной машине, устанавливает необходимый инструмент:
-	sudo apt-get update
-	sudo apt-get install parted
+2. Для лёгкого и простого монтирования диска к виртуальной машине, устанавливает необходимый инструмент:  
+	sudo apt-get update  
+	sudo apt-get install parted  
 
-3. Командой sudo parted -l | grep Error находим неопознаный диск в системе. В нашем случае это будет sdb:
-	# Error: /dev/sdb: unrecognised disk label
+3. Командой sudo parted -l | grep Error находим неопознаный диск в системе. В нашем случае это будет sdb:  
+	Error: /dev/sdb: unrecognised disk label
 
-4. Теперь необходимо новый диск отформатировать и примонтировать его к нашей системе:
-	# sudo parted /dev/sdb mklabel gpt   //выбрали стандарт разметки
-	# sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%  //создаём новую партицию (sdb1) на новом диске
-	# sudo mkfs.ext4 -L datapartition /dev/sdb1 //форматируем созданную партицию в ФС ext4
-	# sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску
+4. Теперь необходимо новый диск отформатировать и примонтировать его к нашей системе:  
+	sudo parted /dev/sdb mklabel gpt   //выбрали стандарт разметки  
+	sudo parted -a opt /dev/sdb mkpart primary ext4 0% 100%  //создаём новую партицию (sdb1) на новом диске  
+	sudo mkfs.ext4 -L datapartition /dev/sdb1 //форматируем созданную партицию в ФС ext4  
+	sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску  
 
 5. Монтируем новую партицию в /mnt/data, вносим изменения в /etc/fstab (LABEL=otusdisk2 /mnt/data ext4 defaults 0 2) и делаем владельцем пользователя postgres:
 	1_mount_disk.PNG
