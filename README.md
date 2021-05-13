@@ -1,2 +1,3 @@
 # OTUS-Postgresql
-Learning Postgresql may-september 2021
+Курсы по администрированию БД Postgresql
+май-сентябрь 2021 год
