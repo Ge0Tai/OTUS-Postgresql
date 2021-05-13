@@ -15,10 +15,10 @@
 	`sudo mkfs.ext4 -L datapartition /dev/sdb1 //форматируем созданную партицию в ФС ext4`  
 	`sudo e2label /dev/sdb1 otusdisk2  //присваиваем метку (label) нашему новому диску`  
 
-5. Монтируем новую партицию в <i>/mnt/data</i>, вносим изменения в <i>/etc/fstab (LABEL=otusdisk2 /mnt/data ext4 defaults 0 2)</i> и делаем владельцем пользователя postgres:  
+5. Монтируем новую партицию в <b>/mnt/data</b>, вносим изменения в <b>/etc/fstab</b> (<i>LABEL=otusdisk2 /mnt/data ext4 defaults 0 2</i>) и делаем владельцем пользователя postgres:  
 	1_mount_disk.PNG
 
-6. Останавливаем службу postgresql и переносим (<b>mv</b>) директорию с данными (<i>/var/lib/postgresql/12/main</i>) на новый диск (в <i>/mnt/data/</i>):
+6. Останавливаем службу postgresql и переносим (<b>mv</b>) директорию с данными (<i>/var/lib/postgresql/12/main</i>) на новый диск (в <i>/mnt/data/</i>):  
 	2_stop_DB.PNG
 	
 Теперь служба (кластер) postgresql не сможет стартовать - там где она ищет файлы данных (параметр <b>data_directory</b> в файле <i>/etc/postgresql/12/main/postgresql.conf</i>) - пусто.
