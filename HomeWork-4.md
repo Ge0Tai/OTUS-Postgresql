@@ -22,8 +22,8 @@
 
 5. Соединяемся с кластером, создаём в нём новую БД, в ней таблицу и всавляем 2 строки:
    
-   `create database docker_otus;`
-   `\c docker_otus;`
+   `create database docker_otus;`  
+   `\c docker_otus;`  
    `create table t_docker(id integer, name varchar(50);`
    
 ![](pics/dz4/4_client_connect_insert.png)
@@ -44,7 +44,7 @@
 
 9. Останавливаем и удаляем наш контейнер:
    
-   `sudo docker stop pg-docker`
+   `sudo docker stop pg-docker`  
    `sudo docker rm pg-docker`
   
   убеждаемся, что каталог <b>/var/lib/docker/containers</b> пустой:
