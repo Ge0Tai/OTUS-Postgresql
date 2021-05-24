@@ -48,7 +48,7 @@
 	
 	![](pics/dz5/5_no_object_in_schema.PNG)
 	
-	<b><i>Причина:</i></b> давая привилегию <i>grant select on all tables in schema testnm to readonly;</i>, мы давали её на существующие объекты в схеме, а на тот момент <b>t1</b>  
+	<b><i>Причина:</i></b> давая привилегию <i>grant select on all tables in schema testnm to readonly;</i>, мы давали её на существующие объекты в схеме, а на тот момент <b>t1</b>
 	не существовала в схеме <b>testnm</b>. Для того чтобы привилегия заработала, необходимо зайти под пользователем <b>postgres</p> и повторно дать привилегию:  
 	`grant select on all tables in schema testnm TO readonly;`
 	
