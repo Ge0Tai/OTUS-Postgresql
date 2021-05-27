@@ -35,7 +35,7 @@
 
 Убедимся, что в буферном кэше нет никаких объектов, относящейся к нашей пустой таблице t_test:
   
-	`select * from v_buffercache WHERE relname='t_test';`
+	`select * from v_buffercache WHERE relname='t_test';`  
 
 	![](pics/dz7/2_cr_view.PNG)
 
