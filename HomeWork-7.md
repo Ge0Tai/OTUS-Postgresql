@@ -90,9 +90,9 @@
 
 7. Посмотрим распределение буферов по частоте их использования:
 
-`SELECT usagecount, count(*)`  
-`FROM pg_buffercache`  
-`GROUP BY usagecount`  
-`ORDER BY usagecount;`
+	`SELECT usagecount, count(*)`  
+	`FROM pg_buffercache`  
+	`GROUP BY usagecount`  
+	`ORDER BY usagecount;`
 
 	![](pics/dz7/4_buff_count.PNG)
