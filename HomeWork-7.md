@@ -18,20 +18,20 @@
 
 	`create table t_test(i int);`  
 
-	`create or replace view v_buffercache as  
-	SELECT bufferid,  
-		(SELECT c.relname FROM pg_class c WHERE  pg_relation_filenode(c.oid) = b.relfilenode ) relname,  
-		CASE relforknumber  
-			WHEN 0 THEN 'main'  
-			WHEN 1 THEN 'fsm'  
-			WHEN 2 THEN 'vm'  
-		END relfork,  
-		relblocknumber,  
-		isdirty,  
-		usagecount  
-	FROM   pg_buffercache b  
-	WHERE  b.relDATABASE IN (0, (SELECT oid FROM pg_DATABASE WHERE datname = current_database()) )  
-	AND    b.usagecount is not null;`  
+	`create or replace view v_buffercache as`  
+	`SELECT bufferid,`  
+		`(SELECT c.relname FROM pg_class c WHERE  pg_relation_filenode(c.oid) = b.relfilenode ) relname,`  
+		`CASE relforknumber`  
+			`WHEN 0 THEN 'main'`  
+			`WHEN 1 THEN 'fsm'`  
+			`WHEN 2 THEN 'vm'`  
+		`END relfork,`  
+		`relblocknumber,`  
+		`isdirty,`  
+		`usagecount`  
+	`FROM   pg_buffercache b`  
+	`WHERE  b.relDATABASE IN (0, (SELECT oid FROM pg_DATABASE WHERE datname = current_database()) )`  
+	`AND    b.usagecount is not null;`  
 
 Убедимся, что в буферном кэше нет никаких объектов, относящейся к нашей пустой таблице t_test:
   
@@ -42,7 +42,7 @@
 3. Вставим одну строку в нашу таблицу. Что должно произойти? В буферном кэше должен появится "грязный" (требует записи на диск) буфер с счётчиком обращений
 (<b>usage count</b>) равным 1:
 
-	`insert into t_test values(1);`
+	`insert into t_test values(1);`  
 	`SELECT * FROM v_buffercache WHERE relname='t_test';`
 
 	![](pics/dz7/3_ins_one_row.PNG)
