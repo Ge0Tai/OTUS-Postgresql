@@ -69,4 +69,30 @@
 
 	![](pics/dz7/3_vacuum_t_test.PNG) 
 	
+   Карта видимости (<i>Visibility Map</i>, <b>VM</b>) хранит страницы видимые ВСЕМ активным транзакциям (т.е. на странице нет кортежей для очистки), а также в этой
+карте хранятся страницы со всеми замороженными кортежами.
 
+6. Создадим ещё одну таблицу (<b>t_text</b>) с текстовым полем и заполним её данными:
+
+	`create table t_text(t text);`
+
+	`insert into t_text SELECT 'Тексовая строка '||s.id FROM generate_series(1,1000) AS s(id);`
+
+   Вставим новую строку в таблицу <b>t_test</b>:
+
+	`insert into t_test values(5);`
+
+   Теперь посмотрим в буфер:
+
+	`SELECT * FROM v_buffercache WHERE relname IN ('t_test', 't_text');`
+
+	![](pics/dz7/4_buff_2tbl_1.PNG)
+
+7. Посмотрим распределение буферов по частоте их использования:
+
+`SELECT usagecount, count(*)`  
+`FROM pg_buffercache`  
+`GROUP BY usagecount`  
+`ORDER BY usagecount;`
+
+	![](pics/dz7/4_buff_count.PNG)
