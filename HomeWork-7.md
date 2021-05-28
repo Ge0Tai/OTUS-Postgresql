@@ -134,6 +134,20 @@
 
    ![](pics/dz7/5_sel_pg_prewarm.png)
 
+Инициируем процесс сброса кэша в файл <b>autoprewarm.blocks</b> (чтобы не ждать 300 сек):
+ 
+  `SELECT autoprewarm_dump_now();`  
+  `ALTER SYSTEM SET shared_preload_libraries = 'pg_prewarm';`  
+  `sudo pg_ctlcluster 12 main restart`  
+  `SELECT name, setting, unit FROM pg_settings WHERE name LIKE 'pg_prewarm%';`  
+  `SELECT pg_prewarm('t_text'); //поместим таблицу в кэш`  
+  `SELECT autoprewarm_dump_now(); //запишем список страниц в файл autoprewarm.blocks (чтобы не ждать)`
+  
+  ![](pics/dz7/5_sel_pg_prewarm.png)
+  
+Снова перезапустим сервер и убедимся, что наша таблица (<b>t_text</b>) сразу оказывается в кэше:
+
+  ![](pics/dz7/5_sel_pg_prewarm.png)
 
 9. <b>WAL</b> <i>(write-ahead logging)</i> - журнал предзаписи:
 
