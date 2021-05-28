@@ -143,11 +143,7 @@
   `SELECT pg_prewarm('t_text'); //поместим таблицу в кэш`  
   `SELECT autoprewarm_dump_now(); //запишем список страниц в файл autoprewarm.blocks (чтобы не ждать)`
   
-  ![](pics/dz7/5_sel_pg_prewarm.png)
-  
-Снова перезапустим сервер и убедимся, что наша таблица (<b>t_text</b>) сразу оказывается в кэше:
-
-  ![](pics/dz7/5_sel_pg_prewarm.png)
+  ![](pics/dz7/5_right_cache_prewarm.png)
 
 9. <b>WAL</b> <i>(write-ahead logging)</i> - журнал предзаписи:
 
