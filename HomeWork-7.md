@@ -156,3 +156,33 @@
    * операции с нежурналируемыми (unlogged) таблицами — их название говорит само за себя;  
    * операции с временными таблицами — нет смысла, поскольку время жизни таких таблиц не превышает времени жизни создавшего их сеанса.         
 	
+Установим расширение <b>pageinspect</b> для наблюдения за журналами:
+  
+  `CREATE EXTENSION pageinspect;`  
+  
+Начнём транзакцию, посмотрим позицию вставки в журнал. После чего сделаем <b>update</b> таблицы и опять посмотрим позицию в журнале:  
+  
+  `begin;`  
+  `SELECT pg_current_wal_insert_lsn();`  
+  `update t_test set i=i+1;`  
+  `SELECT pg_current_wal_insert_lsn();`  
+  
+ ![](pics/dz7/6_wal_pos_update.png)
+ 
+ Посмотрим размер журнальной записи (в байтах): 
+ 
+  `SELECT '0/1830950'::pg_lsn - '0/1830BD0'::pg_lsn;`  
+  
+ ![](pics/dz7/6_wal_pos_size.png)
+ 
+А теперь посмотрим на записи в журнале - видим наши <b>update</b> 4-х строк:
+ 
+ `sudo /usr/lib/postgresql/12/bin/pg_waldump -p /var/lib/postgresql/12/main/pg_wal -s 0/1830950 -e 0/1830BD0 000000010000000000000001` 
+ 
+ ![](pics/dz7/6_wal_inside.png)
+ 
+ 
+ 
+  
+  
+  
