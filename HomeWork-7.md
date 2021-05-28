@@ -100,3 +100,34 @@
 	`ORDER BY usagecount;`
 
 	![](pics/dz7/4_buff_count.PNG)
+
+  Использование кэша (в %) при счётчике использования более 3 - т.е. наиболее часто испозьзуемые таблицы в БД.
+
+	`SELECT c.relname,`  
+	  `count(*) blocks,`  
+  	`round( 100.0 * 8192 * count(*) / pg_TABLE_size(c.oid) ) "% of rel",`  
+  	`round( 100.0 * 8192 * count(*) FILTER (WHERE b.usagecount > 3) / pg_TABLE_size(c.oid) ) "% hot"`  
+	`FROM pg_buffercache b`  
+  	`JOIN pg_class c ON pg_relation_filenode(c.oid) = b.relfilenode`  
+	`WHERE  b.relDATABASE IN (`  
+        	 `0, (SELECT oid FROM pg_DATABASE WHERE datname = current_database())`  
+       	`)`  
+	`AND    b.usagecount is not null`  
+	`GROUP BY c.relname, c.oid`  
+	`ORDER BY 2 DESC`  
+	`LIMIT 10;`  
+	
+   ![](pics/dz7/4_hot_tbl.png)  
+	
+	
+8. <b>WAL</b> <i>(write-ahead logging)</i> - журнал предзаписи:
+
+	- изменение страниц в буферном кеше (как правило, это страницы таблиц и индексов) — так как измененная страница попадает на диск не сразу;
+	- фиксация и отмена транзакций — изменение статуса происходит в буферах XACT и тоже попадает на диск не сразу;
+	- файловые операции (создание и удаление файлов и каталогов, например, создание файлов при создании таблицы) — так как эти 	- операции должны происходить синхронно с изменением данных.
+
+В журнал не записываются:
+
+	- операции с нежурналируемыми (unlogged) таблицами — их название говорит само за себя;
+	- операции с временными таблицами — нет смысла, поскольку время жизни таких таблиц не превышает времени жизни создавшего их сеанса.
+	
