@@ -181,6 +181,20 @@
  
  ![](pics/dz7/6_wal_inside.png)
  
+10. Сыметируем сбой (сразу после вставки строк в таблицу "убъём" службу):
+ 
+ `truncate table t_text; //очистим таблицу`  
+ `insert into t_text SELECT 'Сбой '||s.id FROM generate_series(1,5) AS s(id);  //вставим новые строки`  
+ `sudo pkill -9 postgres //Убъём службу`
+ 
+ ![](pics/dz7/7_crash_cluster.png)
+ 
+ Убедимся, что после перезапуска данные на месте:
+
+ ![](pics/dz7/7_restore_cluster.png) 
+ 
+11. <b>Checkpoint</b>
+ 
  
  
   
