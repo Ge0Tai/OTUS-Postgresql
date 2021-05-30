@@ -299,10 +299,11 @@
 15. <b>Контрольная сумма</b>
 
 Включение ведения контрольных сумм в кластере:
+
 `su - postgres -c 'psql -c "SHOW data_checksums;"' //убедимся, что параметр в OFF`  
 `sudo pg_ctlcluster 12 main stop //стопим кластер`  
 `su - postgres -c '/usr/lib/postgresql/12/bin/pg_controldata -D "/var/lib/postgresql/12/main"' | grep state //проверяем, что кластер остановлен корректно`  
-`su - postgres -c '/usr/lib/postgresql/12/bin/pg_checksums --enable -D "/var/lib/postgresql/12/main" -P' //включаем контрольные суммы`
+`su - postgres -c '/usr/lib/postgresql/12/bin/pg_checksums --enable -D "/var/lib/postgresql/12/main" -P' //включаем контрольные суммы`  
 `sudo pg_ctlcluster 12 main start //стартуем кластер`
 
 ![](pics/dz7/9_enable_checksumm.png)
