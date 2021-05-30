@@ -308,6 +308,33 @@
 
 ![](pics/dz7/9_enable_checksumm.png)
 
+Убедимся что параметр проверки по контрольным суммам включен:
+
+`show ignore_checksum_failure;  //по умолчанию проверка включена, поэтому значение параметра ignore - off`
+
+Создадим таблицу и вставим значения:
+
+`create table check1 (i integer);`  
+`insert into check1 SELECT s.id from generate_series(1,100) AS s(id);`
+
+Остановим кластер и поломаем данные в твблице:
+
+`dd if=/dev/zero of=/var/lib/postgresql/12/main/base/16449/2696 oflag=dsync conv=notrunc bs=1 count=8` 
+
+Теперь при попытке обращения, видим ошибку контрольной суммы:
+
+![](pics/dz7/9_err_chck.png)
+
+Изменим (отключим) параметр <b>ignore_checksum_failure</b> и убедимся что доступ появился (<b>ERROR</b> сменился на <b>WARNING</b>):
+
+`alter system set ignore_checksum_failure=ON;`
+
+![](pics/dz7/9_ignore_err_chck.png)
+
+
+
+
+
 
 
 
