@@ -89,7 +89,7 @@
  `begin;`  
  `update accounts set amount = amount + 3000 where i = 1`
  
-![](pics/dz8/3_update_1.PNG)
+![](pics/dz8/3_update_2.PNG)
 
 (1)Видим, что появилась транзакция с номером <b>1610378</b> (видим строку с <b>transactionid</b>), получившая и удерживающая (<b>granted t</b>) блокировку в режиме RowExclusive на отношение <b>accounts</b>. 
  
