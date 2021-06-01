@@ -31,3 +31,24 @@
 ### max_locks_per_transaction × max_connections - максимальное количество блокировок в системе
 
 >Пул блокировок — общий для всех транзакций, то есть одна транзакция может захватить больше блокировок, чем max_locks_per_transaction: важно лишь, чтобы общее число блокировок в системе не превысило установленный предел. Пул создается при запуске, так что <b>изменение любого из двух указанных параметров требует перезагрузки сервера</b>.
+
+2. Настроим параметры:
+
+![](pics/dz8/1_set_params_deadlocks.PNG)
+
+Создадим вью <b>v_locks</b>:
+
+ `CREATE VIEW v_locks AS`  
+ `SELECT pid,`  
+       `locktype,`  
+       `CASE locktype`  
+         `WHEN 'relation' THEN relation::REGCLASS::text`  
+         `WHEN 'virtualxid' THEN virtualxid::text`  
+         `WHEN 'transactionid' THEN transactionid::text`  
+         `WHEN 'tuple' THEN relation::REGCLASS::text||':'||tuple::text`  
+       `END AS lockid,`  
+       `mode,`  
+       `granted`  
+ `FROM pg_locks;`
+ 
+ 
