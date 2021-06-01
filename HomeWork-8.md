@@ -26,6 +26,10 @@
  - <b>advisory</b>  
 Рекомендательная блокировка, устанавливается пользователем вручную.
 
+#### Матрица совместимости блокировок:
+
+![](pics/dz8/1_matrix_locks.PNG)
+
 ### pg_blocking_pids(<i>pid</i>) - (функция) кто блокирует
 ### log_lock_waits - (параметр)
 ### max_locks_per_transaction × max_connections - максимальное количество блокировок в системе
@@ -51,4 +55,4 @@
        `granted`  
  `FROM pg_locks;`
  
- 
+ ![](pics/dz8/2_cr_view_locks.PNG)
