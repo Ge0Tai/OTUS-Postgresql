@@ -84,4 +84,11 @@
 
  `INSERT INTO accounts VALUES (1,2000.00), (2,2000.00), (3,2000.00), (4,3000.00), (5,3500.00);`
  
+Начнём транзакцию и обновим строку в таблице <b>accounts</b>:
 
+ `begin;`  
+ `update accounts set amount = amount + 3000 where i = 1`
+ 
+![](pics/dz8/3_update_1.PNG)
+
+Видим, что появилась транзакция с номером <b>1610378</b>, получившая блокировку в режиме Exclusive
