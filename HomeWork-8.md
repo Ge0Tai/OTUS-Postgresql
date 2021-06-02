@@ -178,3 +178,50 @@
 <b>CONTEXT:</b> <i>сообщает, что именно мы ждём - когда обновится строка - tuple (0,3) в таблице</i>  
 <b>STATEMENT:</b> <i>показывает команду, которую мы собираемся выполнить, после освобождения строки</i>
 
+9. Теперь ответим на вопрос: <b><i>Могут ли две транзакции, выполняющие единственную команду UPDATE одной и той же таблицы (без where), заблокировать друг друга?</i></b>
+
+Ответ: <b>МОГУТ</b>
+
+Воспроизведём такую ситуацию. Сначала пояснения:
+  
+Предположим, что первая транзакция (<b>T1</b>) хочет обновить 2 строки (например, первую и третью). Она начинает обновлять первую строку...
+В это же время, вторая транзакция (<b>T2</b>) также решила обновить ЭТИ ЖЕ строки, но в обратном порядке - третью и первую:
+
+* Для <b>T1</b>:
+ 
+ `begin;`  
+ `update accounts set amount = amount - 250 where i = 1;`  
+ `update accounts set amount = amount + 600 where i = 3;`
+ 
+* Для <b>T2</b>:
+
+ `begin;`  
+ `update accounts set amount = amount + 2000 where i = 3;`  
+ `update accounts set amount = amount + 100 where i = 1;`
+
+ ![](pics/dz8/5_DL_1.PNG)
+ 
+На картинке выше видим, что пока никаких проблем нет - каждая транзакция получила свой номер и <b>RowExclusive</b>, которые совместимы друг с другом (смотрим матрицу).
+ 
+А теперь пытаемся выполнить вторую операцию транзакции:
+
+ ![](pics/dz8/5_DL_2.PNG) 
+ 
+И тут же получаем ошибку во второй сессии:
+
+<i>ERROR:  40P01: deadlock detected</i>  
+<i>DETAIL:  Process 1270 waits for ShareLock on transaction 1610383; blocked by process 1269.</i>  
+<i>Process 1269 waits for ShareLock on transaction 1610384; blocked by process 1270.</i>  
+<i>HINT:  See server log for query details.</i>  
+<i>CONTEXT:  while updating tuple (0,6) in relation "accounts"</i>  
+<i>LOCATION:  DeadLockReport, deadlock.c:1141</i>  
+<i>Time: 200.678 ms</i>  
+
+При этом, первая транзакция (<b>T1</b>) завершается без проблем, фиксирует изменения и снимает все блокировки:
+ 
+ ![](pics/dz8/5_DL_3.PNG)
+ 
+Это, естественно, отражается и в логе кластера:
+  
+  ![](pics/dz8/5_DL_LOG.PNG)
+  
