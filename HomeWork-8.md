@@ -129,7 +129,7 @@
  `select pg_backend_pid();     // 1777`  
  `update accounts set amount = amount + 2300 where i = 3;`
  
- ![](4_update_row_3sess.PNG)
+ ![](pics/dz8/4_update_row_3sess.PNG)
  
  Видим следующее:  
  
