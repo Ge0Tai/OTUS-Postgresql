@@ -19,6 +19,8 @@
 
  `curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash sudo apt -y install sysbench`
  
+ >С помощью sysbench вы можете выполнять различные виды рабочей нагрузки базы данных.
+ 
 3. Подготовим данные для теста:
 
  `CREATE USER sbtest WITH PASSWORD 'password';`  
