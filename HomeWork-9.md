@@ -10,7 +10,8 @@
  `sudo apt install postgresql-13 postgresql-client-13`  
  `sudo pg_lsclusters //видим 2 запущенных кластера (12 и 13 версии)`  
  `sudo pg_dropcluster 13 main --stop`  
- `sudo pg_upgradecluster 12 main`
+ `sudo pg_upgradecluster 12 main`  
+ `sudo apt-get purge postgresql-12 postgresql-client-12`
  
  ![](pics/dz9/0_upgrade_PSQL_13.PNG)
  
