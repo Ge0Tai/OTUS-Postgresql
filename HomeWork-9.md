@@ -100,3 +100,7 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  `run`  
  
  ![](pics/dz9/1_result_read_no_tuning.PNG)
+
+6. Тесты с изменёнными настройками:
+ 
+ 
