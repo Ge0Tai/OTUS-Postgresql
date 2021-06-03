@@ -29,6 +29,23 @@
  
  ![](pics/dz9/0_create_testDB_1.PNG)
  
+4. Инициализируем БД <b>sysbench</b> с помощью скрипта:
 
-
-
+ `sudo sysbench \`  
+ `--db-driver=pgsql \`  
+ `--oltp-table-size=100000 \`  
+ `--oltp-tables-count=24 \`  
+ `--threads=1 \`  
+ `--pgsql-host=127.0.0.1 \`  
+ `--pgsql-port=5432 \`  
+ `--pgsql-user=sbtest \`  
+ `--pgsql-password=password \`  
+ `--pgsql-db=sbtest \`  
+ `/usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \`  
+ `run`
+ 
+ ![](pics/dz9/0_create_testDB_2.PNG)
+ 
+ ![](pics/dz9/0_create_testDB_3.PNG)
+ 
+ 
