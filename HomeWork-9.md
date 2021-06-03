@@ -1,4 +1,6 @@
-## help:
+## Домашнее задание № 7 (Настройка PostgreSQL )
+
+#### help:
 https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench
 
 1. Установим 13-ю версию PostgreSQL:
