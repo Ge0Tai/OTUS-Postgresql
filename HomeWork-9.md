@@ -61,7 +61,9 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  
  ![](pics/dz9/1_loaded_data.PNG)
 
-5. Тест <b>read/write</b> (<b>OLTP</b>):
+5. Тесты с настройками по умолчанию:
+
+ * <b>read/write</b> (<b>OLTP</b>):
 
  `sudo sysbench \`  
  `--db-driver=pgsql \`  
@@ -78,4 +80,23 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  `/usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \`  
  `run`  
  
+ ![](pics/dz9/1_result_oltp_no_tuning.PNG)
  
+ * <b>read only</b>
+
+ `sudo sysbench \`  
+ `--db-driver=pgsql \`  
+ `--report-interval=2 \`  
+ `--oltp-table-size=100000 \`  
+ `--oltp-tables-count=24 \`  
+ `--threads=64 \`  
+ `--time=60 \`  
+ `--pgsql-host=127.0.0.1 \`  
+ `--pgsql-port=5432 \`  
+ `--pgsql-user=sbtest \`  
+ `--pgsql-password=password \`  
+ `--pgsql-db=sbtest \`  
+ `/usr/share/sysbench/tests/include/oltp_legacy/select.lua \`  
+ `run`  
+ 
+ ![](pics/dz9/1_result_read_no_tuning.PNG)
