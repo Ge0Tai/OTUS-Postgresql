@@ -18,4 +18,17 @@
 2. Устанавливаем <b>sysbench-tpcc</b>:
 
  `curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash sudo apt -y install sysbench`
+ 
+3. Подготовим данные для теста:
+
+ `CREATE USER sbtest WITH PASSWORD 'password';`  
+ `CREATE DATABASE sbtest;`  
+ `GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;`  
+ 
+ ![](pics/dz9/0_create_testDB.PNG)
+ 
+ ![](pics/dz9/0_create_testDB_1.PNG)
+ 
+
+
 
