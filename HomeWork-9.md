@@ -52,7 +52,7 @@
 
  `psql -U sbtest -W`  
  `\c sbtest;`  
- '\dt+`
+ `\dt+`
  
  ![](pics/dz9/1_loaded_data.PNG)
 
