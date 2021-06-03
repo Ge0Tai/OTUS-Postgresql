@@ -17,6 +17,5 @@
  
 2. Устанавливаем <b>sysbench-tpcc</b>:
 
- `curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash  
-sudo apt -y install sysbench`
+ `curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash sudo apt -y install sysbench`
 
