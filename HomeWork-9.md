@@ -51,6 +51,8 @@
  Тестовые данные загружены. Проверяем:
 
  `psql -U sbtest -W`  
+ `\c sbtest;`  
+ '\dt+`
  
  ![](pics/dz9/1_loaded_data.PNG)
 
