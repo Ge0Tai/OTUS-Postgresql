@@ -48,4 +48,9 @@
  
  ![](pics/dz9/0_create_testDB_3.PNG)
  
+ Тестовые данные загружены. Проверяем:
+
+ `psql -U sbtest -W`  
  
+ ![](pics/dz9/1_loaded_data.PNG)
+
