@@ -103,7 +103,7 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  
  ![](pics/dz9/1_result_read_no_tuning.PNG)
  
- <b><i>transactions:      550173 (9163.93 per sec.)</i></b>
+ <b><i>transactions:      560463 (9335.38 per sec.)</i></b>
 
 6. Тесты с изменёнными настройками:
 
