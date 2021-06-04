@@ -137,6 +137,7 @@ max_parallel_maintenance_workers = 1</i>
 
 ![](pics/dz9/6_pg_tune_result.PNG)
 
+<b><i>transactions:       21368  (354.47 per sec.)</i></b>
 
 
 #### Ссылки:  
