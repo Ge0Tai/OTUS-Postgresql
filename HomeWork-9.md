@@ -1,8 +1,5 @@
 ## Домашнее задание № 7 (Настройка PostgreSQL )
 
-#### Ссылки:
-https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench
-
 1. Установим 13-ю версию PostgreSQL:
  `sudo apt update`  
  `sudo apt -y upgrade`  
