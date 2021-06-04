@@ -1,6 +1,6 @@
 ## Домашнее задание № 7 (Настройка PostgreSQL )
 
-#### help:
+#### Ссылки:
 https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench
 
 1. Установим 13-ю версию PostgreSQL:
@@ -104,3 +104,8 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
 6. Тесты с изменёнными настройками:
  
  
+
+#### Ссылки:  
+https://github.com/akopytov/sysbench - установка sysbench
+https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench - тестирование
+https://pgtune.leopard.in.ua/#/ - PGTune
