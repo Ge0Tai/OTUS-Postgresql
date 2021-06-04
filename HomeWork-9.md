@@ -102,8 +102,33 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  ![](pics/dz9/1_result_read_no_tuning.PNG)
 
 6. Тесты с изменёнными настройками:
- 
- 
+
+Воспользуемся генератором настроек: https://pgtune.leopard.in.ua/
+
+![](pics/dz9/6_pg_tune_OLTP.PNG)
+
+max_connections = 20  # уменьшили кол-во коннектов до минимума  
+shared_buffers = 1GB  # 25% - согласно рекомендации PostgreSQL  
+effective_cache_size = 3GB # 75% от общей ОП  
+maintenance_work_mem = 256MB # Определяет максимальное количество ОП для операций типа VACUUM, CREATE INDEX, CREATE FOREIGN KEY. Увеличение этого параметра позволит быстрее выполнять эти операции  
+checkpoint_completion_target = 0.9 # время (в %) записи на диск со старта Chckpt до старта следуещей Chckpt  
+wal_buffers = 16MB # Объём разделяемой памяти, который будет использоваться для буферизации данных WAL, ещё не записанных на диск  
+default_statistics_target = 100   
+random_page_cost = 1.1  
+effective_io_concurrency = 200  
+work_mem = 52428kB # Используется для сортировок, построения hash таблиц. Это позволяет выполнять данные операции в памяти, что гораздо быстрее обращения к диску  
+min_wal_size = 2GB # Ограничивает снизу число файлов WAL, которые будут переработаны для будущего использования  
+max_wal_size = 8GB # Максимальный размер, до которого может вырастать WAL между автоматическими контрольными точками в WAL (если размер достигнут - контрольная точка запускается вне графика)  
+max_worker_processes = 2  
+max_parallel_workers_per_gather = 1  
+max_parallel_workers = 2  
+max_parallel_maintenance_workers = 1  
+#Add some parameters  
+archive_mode = off # Отключаем ведение архивных журналов (мы же ничего не боимся)
+
+![](pics/dz9/6_change_params.PNG)
+
+
 
 #### Ссылки:  
 https://github.com/akopytov/sysbench - установка sysbench  
