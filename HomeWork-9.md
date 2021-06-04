@@ -178,11 +178,11 @@ max_parallel_maintenance_workers = 1</i>
 
 <b>ИТОГ:</b>
 
-| Left-Aligned  | TPS (Defoult)   | TPS (PGTune) |
+| Left-Aligned  | TPS (Default)   | TPS (PGTune) |
 | :------------ |:---------------:| ------------:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+| OLTP          |  256.05         |  <b>354.47</b> |
+| DWH           | <b>9335.38</b>         |      9163.93 |
+ 
 
 #### Ссылки:  
 https://github.com/akopytov/sysbench - установка sysbench  
