@@ -106,6 +106,6 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  
 
 #### Ссылки:  
-https://github.com/akopytov/sysbench - установка sysbench
-https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench - тестирование
-https://pgtune.leopard.in.ua/#/ - PGTune
+https://github.com/akopytov/sysbench - установка sysbench  
+https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench - тестирование  
+https://pgtune.leopard.in.ua/#/ - PGTune  
