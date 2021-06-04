@@ -176,6 +176,14 @@ max_parallel_maintenance_workers = 1</i>
 
 <b><i>transactions:      550173 (9163.93 per sec.)</i></b>
 
+<b>ИТОГ:</b>
+
+| Left-Aligned  | TPS (Defoult)   | TPS (PGTune) |
+| :------------ |:---------------:| ------------:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
 #### Ссылки:  
 https://github.com/akopytov/sysbench - установка sysbench  
 https://severalnines.com/database-blog/how-benchmark-postgresql-performance-using-sysbench - тестирование  
