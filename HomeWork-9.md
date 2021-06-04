@@ -82,6 +82,8 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  
  ![](pics/dz9/1_result_oltp_no_tuning.PNG)
  
+ <b><i>transactions:       15469  (256.05 per sec.)</i></b>
+ 
  * <b>read only</b>
 
  `sudo sysbench \`  
@@ -100,10 +102,14 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
  `run`  
  
  ![](pics/dz9/1_result_read_no_tuning.PNG)
+ 
+ <b><i>transactions:      550173 (9163.93 per sec.)</i></b>
 
 6. Тесты с изменёнными настройками:
 
 Воспользуемся генератором настроек: https://pgtune.leopard.in.ua/
+
+* <b>read/write</b> (<b>OLTP</b>):
 
 ![](pics/dz9/6_pg_tune_OLTP.PNG)
 
@@ -139,6 +145,36 @@ max_parallel_maintenance_workers = 1</i>
 
 <b><i>transactions:       21368  (354.47 per sec.)</i></b>
 
+* <b>read only</b>:
+
+![](pics/dz9/6_pg_tune_DWH.PNG)
+
+<i>max_connections = 100  
+shared_buffers = 1GB  
+effective_cache_size = 3GB  
+maintenance_work_mem = 512MB  
+checkpoint_completion_target = 0.9  
+wal_buffers = 16MB  
+default_statistics_target = 500  
+random_page_cost = 1.1  
+effective_io_concurrency = 200  
+work_mem = 5242kB  
+min_wal_size = 4GB  
+max_wal_size = 16GB  
+max_worker_processes = 2  
+max_parallel_workers_per_gather = 1  
+max_parallel_workers = 2  
+max_parallel_maintenance_workers = 1</i>
+
+![](pics/dz9/6_change_params_DWH.PNG)
+
+<b><i>Не забываем рестартовать кластер!!!</i></b>
+
+Запускаем тест (см. <b>п.5</b>).
+
+![](pics/dz9/6_pg_tune_result_DWH.PNG)
+
+<b><i>transactions:      550173 (9163.93 per sec.)</i></b>
 
 #### Ссылки:  
 https://github.com/akopytov/sysbench - установка sysbench  
