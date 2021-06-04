@@ -107,7 +107,7 @@ https://severalnines.com/database-blog/how-benchmark-postgresql-performance-usin
 
 ![](pics/dz9/6_pg_tune_OLTP.PNG)
 
-max_connections = 20  # уменьшили кол-во коннектов до минимума  
+<i>max_connections = 20  # уменьшили кол-во коннектов до минимума  
 shared_buffers = 1GB  # 25% - согласно рекомендации PostgreSQL  
 effective_cache_size = 3GB # 75% от общей ОП  
 maintenance_work_mem = 256MB # Определяет максимальное количество ОП для операций типа VACUUM, CREATE INDEX, CREATE FOREIGN KEY. Увеличение этого параметра позволит быстрее выполнять эти операции  
@@ -124,7 +124,7 @@ max_parallel_workers_per_gather = 1
 max_parallel_workers = 2  
 max_parallel_maintenance_workers = 1  
 #Add some parameters  
-archive_mode = off # Отключаем ведение архивных журналов (мы же ничего не боимся)
+archive_mode = off # Отключаем ведение архивных журналов (мы же ничего не боимся)</i>
 
 ![](pics/dz9/6_change_params.PNG)
 
