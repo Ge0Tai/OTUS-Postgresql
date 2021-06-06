@@ -19,4 +19,3 @@
 
 
 ### Ссылки:
-https://www.postgresqltutorial.com/load-postgresql-sample-database/  //Тестовая БД  
