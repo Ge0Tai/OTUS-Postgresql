@@ -40,7 +40,17 @@
 `ORDER BY lp;`  
 `$$ LANGUAGE SQL;`
 
+Также создадим функцию за наблюдением за индексными страницами:
 
+`CREATE FUNCTION index_page(relname text, pageno integer)`  
+`RETURNS TABLE(itemoffset smallint, ctid tid)`  
+`AS $$`  
+`SELECT itemoffset,`  
+       `ctid`  
+`FROM bt_page_items(relname,pageno);`  
+`$$ LANGUAGE SQL;`
+
+ ![](pics/dz6/1_cr_fuctions_pages.PNG)
 
 * Создаём таблицу с отключённым <b><i>autovacuum</i></b>, создаём индекс, вставляем строку и дважды обновляем её:
 
@@ -56,7 +66,12 @@
 
  ![](pics/dz6/1_cr_tbl_vac.PNG)
  
+* Обратимся к страницам таблицы и индекса. Видим 3 версии строки (в таблице) и три версии ссылок (в индексе):
+
+ `SELECT * FROM heap_page('vac',0);`  
+ `SELECT * FROM index_page('i_vac_s',1);`  
  
+  ![](pics/dz6/1_3_versions_raw_vac.PNG)
 
 1. Применим параметры к кластеру, указанные в задании:
 
@@ -77,3 +92,6 @@
 
 
 ### Ссылки:
+
+https://habr.com/ru/company/postgrespro/blog/449704/  
+https://habr.com/ru/company/postgrespro/blog/452320/
