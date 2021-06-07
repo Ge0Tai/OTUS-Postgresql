@@ -115,7 +115,11 @@
  `autovacuum_vacuum_cost_delay = 10`  //задаёт задержку при превышении предела стоимости, которая будет применяться при автоматических операциях VACUUM  
  `autovacuum_vacuum_cost_limit = 1000`  //предел стоимости, который будет учитываться при автоматических операциях VACUUM  
  
- 
+ Проверим, что настройки применились:
+
+ `select name, setting, context, short_desc from pg_settings where category like '%autovacuum%';`
+
+![](pics/dz6/2_set_autovacuum.PNG) 
 
 ### Ссылки:
 
