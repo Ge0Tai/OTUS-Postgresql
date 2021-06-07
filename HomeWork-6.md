@@ -72,18 +72,26 @@
  `SELECT * FROM index_page('i_vac_s',1);`  
  
   ![](pics/dz6/1_3_versions_raw_vac.PNG)
+  
+* Теперь запустим <b>vacuum</b> на нашу таблицу. В результате мы должны увидеть только актуальную строку в таблице и только актуальную ссылку в индексе:
 
-1. Применим параметры к кластеру, указанные в задании:
+ `VACUUM vac;`  
+ `SELECT * FROM heap_page('vac',0);`  
+ `SELECT * FROM index_page('i_vac_s',1);`  
+ 
+ ![](pics/dz6/1_vac_result.PNG)
+
+2. Применим параметры к кластеру, указанные в задании:
 
  ![](pics/dz6/1_set_config_dwh.png)
  
-2. Создаём объекты <b>pgbench</b> для тестирования:
+3. Создаём объекты <b>pgbench</b> для тестирования:
  
  `pgbench -i postgres -U postgres`
  
  ![](pics/dz6/1_create_schema_pgbench.png)
  
-3. Прогон теста (без настроек Vacuum):
+4. Прогон теста (без настроек Vacuum):
 
  `pgbench -c8 -P 60 -T 3600 -U postgres postgres`
  
