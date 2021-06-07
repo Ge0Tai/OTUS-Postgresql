@@ -105,9 +105,21 @@
  
 ![](pics/dz6/2_first_test.png) 
 
+5. Установим (изменим) параметра <b>AUTOVACUUM</b>, сделав их более агрессивными и прогоним тест ещё раз:
 
+ log_autovacuum_min_duration = 0  //в журнале фиксируются все действия автоочистки
+ autovacuum_max_workers = 10  //максимальное число процессов автоочистки (не считая процесс, запускающий автоочистку)
+ autovacuum_naptime = 15s //задаёт минимальную задержку между двумя запусками автоочистки для отдельной базы данных
+ autovacuum_vacuum_threshold = 25 //минимальное число добавленных, изменённых или удалённых кортежей, при котором будет выполняться ANALYZE для отдельно взятой таблицы
+ autovacuum_vacuum_scale_factor = 0.1  //процент от размера таблицы, который будет добавляться к autovacuum_vacuum_threshold при выборе порога срабатывания команды VACUUM
+ autovacuum_vacuum_cost_delay = 10  //задаёт задержку при превышении предела стоимости, которая будет применяться при автоматических операциях VACUUM
+ autovacuum_vacuum_cost_limit = 1000  //предел стоимости, который будет учитываться при автоматических операциях VACUUM
+ 
+ 
 
 ### Ссылки:
 
 https://habr.com/ru/company/postgrespro/blog/449704/  
-https://habr.com/ru/company/postgrespro/blog/452320/
+https://habr.com/ru/company/postgrespro/blog/452320/  
+https://postgrespro.ru/docs/postgrespro/12/runtime-config-autovacuum
+
