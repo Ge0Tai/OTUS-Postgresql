@@ -122,14 +122,24 @@
 ![](pics/dz6/2_set_autovacuum.PNG) 
 
 Повторно запускаем <b>pgbench</b> с новыми параметрами:
- 
+
+ `pgbench -i postgres -U postgres //пересоздадим объекты pgbench`  
  `pgbench -c8 -P 60 -T 3600 -U postgres postgres`
+
+Посмотрим статус:
  
+ `SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::float "ratio%", last_autovacuum FROM pg_stat_user_tables WHERE relname like 'pgbench%';`
  
+Статистику:
+ 
+ `select * from pg_stat_activity where query ~ 'autovacuum';`
+ 
+![](pics/dz6/5_statistic_av.png)  
 
 ### Ссылки:
 
 https://habr.com/ru/company/postgrespro/blog/449704/  
 https://habr.com/ru/company/postgrespro/blog/452320/  
+https://habr.com/ru/company/postgrespro/blog/452762/  
 https://postgrespro.ru/docs/postgrespro/12/runtime-config-autovacuum
 
