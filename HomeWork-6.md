@@ -134,7 +134,15 @@
  
  `select * from pg_stat_activity where query ~ 'autovacuum';`
  
-![](pics/dz6/5_statistic_av.png)  
+![](pics/dz6/5_statistic_av.png) 
+
+После завершения теста:
+
+![](pics/dz6/6_second_pgbench.PNG) 
+
+построим графики первого (<b>TPS1</b>) и второго (<b>TPS2</b>) теста за последние 10 минут:
+
+![](pics/dz6/6_graf.PNG) 
 
 ### Ссылки:
 
