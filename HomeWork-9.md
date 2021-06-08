@@ -1,6 +1,6 @@
 ## Домашнее задание № 7 (Настройка PostgreSQL )
 
-1. Установим 13-ю версию PostgreSQL:
+1. Установим 13-ю версию PostgreSQL:  
  `sudo apt update`  
  `sudo apt -y upgrade`  
  `sudo apt -y install vim bash-completion wget`  
