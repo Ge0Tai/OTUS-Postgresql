@@ -17,7 +17,7 @@
 	`create user testread with password 'test123';`  
     `grant readonly to testread;`
 	
-    ![](pics/dz5/1_cr_db_schema_role_user.PNG)
+    ![](pics/dz5/1_cr_db_schema_role_user.png)
 	
 2. Поправим файл <b>pg_hba.conf</b>, разрешив подключение к нашему кластеру:
 
