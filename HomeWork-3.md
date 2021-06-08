@@ -3,7 +3,7 @@
 Настроим командную строку <b>psql</b> для пользователя <i>postgres</i>:  
 `mcedit /var/lib/postgresql/.psqlrc`  
 
-\set QUIET 1
+<i>\set QUIET 1
 \set PROMPT1 'googleCloud_db1:%[%033[1;31m%]%>%[%033[0m%] %n@%/%R%#%x '  
 \set PROMPT2 '%M %n@%/%R %# '  
 \pset null '[null]'  
@@ -18,7 +18,7 @@
 \echo 'Start april 2021, finish september 2021. \n'  
 \echo 'Type \\q to exit. \n'  
 \set version 'SELECT version();'  
-\set extensions 'select * from pg_available_extensions;'  
+\set extensions 'select * from pg_available_extensions;'</i>  
 
 1. Создаём новый ssd диск на 10 Гб. и добавляем (attach) к нашей VM.
 
