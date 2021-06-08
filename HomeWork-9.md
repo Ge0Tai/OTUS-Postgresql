@@ -4,9 +4,16 @@
  `sudo apt update`  
  `sudo apt -y upgrade`  
  `sudo apt -y install vim bash-completion wget`  
- `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`  
- `echo "deb http://apt.postgresql.org/pub/repos/apt/ 'lsb_release -cs' -pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list`  
- `sudo apt update`  
+ 
+ # Create the file repository configuration:
+ `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
+
+ # Import the repository signing key:
+ `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
+
+ # Update the package lists:
+ `sudo apt-get update`
+ 
  `sudo apt install postgresql-13 postgresql-client-13`  
  `sudo pg_lsclusters //видим 2 запущенных кластера (12 и 13 версии)`  
  `sudo pg_dropcluster 13 main --stop`  
