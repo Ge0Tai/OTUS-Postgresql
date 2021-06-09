@@ -53,5 +53,10 @@
  
 3. Таблицы опубликованы. Теперь оформим подписку с кластера <b>otus-node1</b> на таблицу <b>t_node2</b> на кластере <b>otus-node2</b>:
 
-      
+ `CREATE SUBSCRIPTION t_node2_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2‘ PUBLICATION t_node2_pub WITH (copy_data = false);`
+ 
+ Проверим статус:
+
+ `SELECT * FROM pg_stat_subscription \gx`
+ 
  
