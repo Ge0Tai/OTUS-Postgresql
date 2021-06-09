@@ -56,8 +56,8 @@
 Для начала пропишем правила в <b>firewall</b> для трёх портов (чтобы два раза не бегать):
 
  `gcloud compute firewall-rules create replica --allow tcp:5432 --source-ranges=0.0.0.0/0 --description="postgresql"`  
- `gcloud compute firewall-rules create replica1 --allow tcp:5433 --source-ranges=0.0.0.0/0 --description="postgresql"`  
- `gcloud compute firewall-rules create replica2 --allow tcp:5434 --source-ranges=0.0.0.0/0 --description="postgresql"`
+ `gcloud compute firewall-rules create replica1 --allow tcp:5433 --source-ranges=0.0.0.0/0 --description="postgresql1"` 
+ `gcloud compute firewall-rules create replica2 --allow tcp:5434 --source-ranges=0.0.0.0/0 --description="postgresql2"`
 
 ![](pics/dz10/2_open_port.PNG)
 
@@ -70,3 +70,8 @@
  `SELECT * FROM pg_stat_subscription \gx`
  
  
+
+
+
+#### Ссылки:  
+https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
