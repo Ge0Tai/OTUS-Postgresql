@@ -43,8 +43,17 @@
  
  `\password //назначим пароль для нашей логической репликации` - <b>otus123</b>
  
+![](pics/dz10/2_public_t_node1.PNG) 
  
+* На <b>otus-node2</b>:
+
+Проделаем тоже самое с таблицей <b>t_node2</b>:
+
+![](pics/dz10/2_public_t_node2.PNG) 
  
+3. Таблицы опубликованы. Теперь оформим подписку с кластера <b>otus-node1</b> на таблицу <b>t_node2</b> на кластере <b>otus-node2</b>:
+
+ `CREATE SUBSCRIPTION t_node2_sub CONNECTION 'host=10.128.0.6              
  
  
  
