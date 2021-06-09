@@ -63,7 +63,7 @@
 
 Подпишемся:
 
- `CREATE SUBSCRIPTION t_node2_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2‘ PUBLICATION t_node2_pub WITH (copy_data = false);`
+ `CREATE SUBSCRIPTION t_node2_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2' PUBLICATION t_node2_pub WITH (copy_data = false);`
  
  Проверим статус:
 
