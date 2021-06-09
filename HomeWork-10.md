@@ -53,6 +53,16 @@
  
 3. Таблицы опубликованы. Теперь оформим подписку с кластера <b>otus-node1</b> на таблицу <b>t_node2</b> на кластере <b>otus-node2</b>:
 
+Для начала пропишем правила в <b>firewall</b> для трёх портов (чтобы два раза не бегать):
+
+ `gcloud compute firewall-rules create replica --allow tcp:5432 --source-ranges=0.0.0.0/0 --description="postgresql"`  
+ `gcloud compute firewall-rules create replica1 --allow tcp:5433 --source-ranges=0.0.0.0/0 --description="postgresql"`  
+ `gcloud compute firewall-rules create replica2 --allow tcp:5434 --source-ranges=0.0.0.0/0 --description="postgresql"`
+
+![](pics/dz10/2_open_port.PNG)
+
+Подпишемся:
+
  `CREATE SUBSCRIPTION t_node2_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2‘ PUBLICATION t_node2_pub WITH (copy_data = false);`
  
  Проверим статус:
