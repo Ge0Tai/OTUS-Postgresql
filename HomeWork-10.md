@@ -59,7 +59,16 @@
  `gcloud compute firewall-rules create replica1 --allow tcp:5433 --source-ranges=0.0.0.0/0 --description="postgresql1"`  
  `gcloud compute firewall-rules create replica2 --allow tcp:5434 --source-ranges=0.0.0.0/0 --description="postgresql2"`
 
-![](pics/dz10/2_open_port.PNG)
+![](pics/dz10/3_open_port.PNG)
+
+Изменим параметр в файле <b>postgres.conf</b>, чтобы кластер слушал все адреса:
+
+`listen_addresses = '*'`
+
+Разрешим удалённое подключение всем пользователям с любых адресов к кластеру по паролю:
+
+`host    all     all    0.0.0.0/0     md5`  
+`host    all     all         ::/0     md5`
 
 Подпишемся:
 
@@ -68,6 +77,8 @@
  Проверим статус:
 
  `SELECT * FROM pg_stat_subscription \gx`
+ 
+ ![](pics/dz10/3_create_sub_1.PNG)
  
  
 
