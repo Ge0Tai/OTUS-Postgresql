@@ -174,9 +174,20 @@
 
 ![](pics/dz10/5_recreate_subs.PNG)
 
+### pg_basebackup
+
+6. Настроим на <b>node3</b> периодический бэкап (по расписанию) наших баз <b>node1</b> и <b>node2</b>:
+
+Внесём изменения в pg_hba.conf на <b>node1</b> и <b>node2</b>, разрешающее репликационное соединение пользователю <b>postgres</b> (без требования ввода пароля) с узла <b>node3</b> для работы программы <b>pg_basebackup</b>:
+
+`host replication postgres 10.128.0.7/32 trust`
+
+![](pics/dz10/6_edit_node1_pg_hba.PNG)
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
 https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
 https://postgrespro.ru/docs/postgresql/12/sql-createsubscription  //create subscription  
 https://eax.me/postgresql-replication/ //потоковая репликация  
+https://postgrespro.ru/docs/postgresql/13/app-pgbasebackup //pg_basebackup  
 
