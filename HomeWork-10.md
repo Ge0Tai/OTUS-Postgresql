@@ -103,6 +103,22 @@
 
 ![](pics/dz10/4_1insert.PNG)
 
+На первом узле (<b>node1</b>) вставим ещё несколько строк только в таблицу <b>t_node1</b> и обратимся к ней на втором узле (<b>node2</b>):
+
+ `insert into t_node1 values (generate_series(2,10),md5(random()::text));`
+ 
+ ![](pics/dz10/4_2insert.PNG)
+ 
+Теперь, на втором узле (<b>node2</b>), вставим несколько строк в таблицу <b>t_node2</b> и обратимся к ней с первого узла (<b>node1</b>):
+
+`insert into t_node2 values (generate_series(2,10),(random()::text));`
+
+![](pics/dz10/4_3insert.PNG)
+
+Как видим, логическая (перекрёстная) репликация между <b>node1</b> и <b>node2</b> работает.  
+Теперь переходим к третьему узлу - <b>node3</b>.
+
+5.
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
