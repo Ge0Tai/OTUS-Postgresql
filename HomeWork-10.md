@@ -89,7 +89,12 @@
 
 ![](pics/dz10/4_create_sub_2.PNG)
 
+На каждом узле вставим по одной строке в таблицы:
 
+
+<b>node1</b>                                                         <b>node2</b>             
+
+`insert into t_node1 values (1, 'Строка в таблице t_node1 - 1');`    `insert into t_node2 values (1, 'Строка в таблице t_node2 - 1');`
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
