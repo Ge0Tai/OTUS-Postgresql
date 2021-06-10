@@ -97,11 +97,11 @@
 
 Сделаем запрос к обоим таблицам и убедимся, что данные, доступные на двух узлах, идентичные:
 
-| <b>node1</b>          | <b>node2</b>  |
-| :------------: |
-| select * from t_node1 a, t_node2 b  
-  where  
-  a.id = b.id; |
+`select * from t_node1 a, t_node2 b`  
+`where`  
+`a.id = b.id;`
+
+![](pics/dz10/4_1insert.PNG)
 
 
 #### Ссылки:  
