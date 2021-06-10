@@ -89,5 +89,7 @@
 
 ![](pics/dz10/4_create_sub_2.PNG)
 
+
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
