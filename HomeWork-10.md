@@ -222,6 +222,14 @@
 
 ![](pics/dz10/6_bck2.PNG)
 
+### hot_standby
+
+На отдельном узле (<b>node4</b>) создадим слэйв нашего третьего узла (<b>node3</b>) с возможностью чтения (<i>hot_standby</i>):
+
+* создадим новую ВМ <b>otus-node4</b> и установим <b>PostgreSQL</b>
+
+* подготовим наш мастер <b>node3</b>
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
 https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
