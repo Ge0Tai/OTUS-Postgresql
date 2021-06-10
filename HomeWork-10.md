@@ -138,5 +138,11 @@
 
 ![](pics/dz10/5_create_2subscription_n3.PNG)
 
+Сделаем выборку данных из таблиц на третьей ноде (<b>node3</b>):
+
+`select * from t_node1;`  
+`select * from t_node2;`
+
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
