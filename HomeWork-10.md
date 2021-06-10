@@ -204,7 +204,17 @@
 `chmod +x backup_node1.sh`  
 `chmod +x backup_node2.sh`
 
+Добавим их в cron для ежедневного выполнения (например, в 1:30 и 2:30 ночи):
 
+`30 1 * * * ~/backup_node1.sh`  
+`30 2 * * * ~/backup_node1.sh`
+
+...и добавим удаление бэкапов старше 7 дней:
+
+`find /home/backup/node1 -type d -mtime +7 -print0 | xargs -0 rm -r`
+`find /home/backup/node2 -type d -mtime +7 -print0 | xargs -0 rm -r`
+
+![](pics/dz10/6_cron_set.PNG)
  
 
 #### Ссылки:  
