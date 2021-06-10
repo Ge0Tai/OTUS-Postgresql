@@ -215,7 +215,12 @@
 `find /home/backup/node2 -type d -mtime +7 -print0 | xargs -0 rm -r`
 
 ![](pics/dz10/6_cron_set.PNG)
- 
+
+Бэкапы настроены:
+
+![](pics/dz10/6_bck1.PNG)
+
+![](pics/dz10/6_bck2.PNG)
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
