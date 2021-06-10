@@ -190,12 +190,20 @@
  `$ mkdir /home/backup/node1`  
  `$ mkdir /home/backup/node2`  
  
-Напишем небольшие скрипты для выполнения бэкапа:
+Напишем небольшие скрипты (<i>backup_node1.sh</i> и <i>backup_node2.sh</i>) для выполнения бэкапа (для <b>node1</b> и <b>node2</b>):
 
-`#!/bin/bash  
-NOW=$(date +'%d-%m-%Y'_'%H:%M:%S')  
-DATA='%m-%d-%Y'  
-pg_basebackup -X stream -v -h 10.128.0.5 -U postgres -D /home/backup/node1/node1_$NOW`  
+`#!/bin/bash`  
+`NOW=$(date +'%d-%m-%Y'_'%H:%M:%S')`  
+`DATA='%m-%d-%Y'`  
+`pg_basebackup -X stream -v -h 10.128.0.5 -U postgres -D /home/backup/node1/node1_$NOW`
+
+<i>Скрипт создаёт бэкап нашего кластера в указанной директории с именем узла и временем выполнения</i>
+
+Сделаем их выполняемыми:
+
+`chmod +x backup_node1.sh`  
+`chmod +x backup_node2.sh`
+
 
  
 
