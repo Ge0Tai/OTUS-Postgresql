@@ -176,4 +176,6 @@
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
-https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы
+https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
+https://postgrespro.ru/docs/postgresql/12/sql-createsubscription  //create subscription  
+
