@@ -184,6 +184,21 @@
 
 ![](pics/dz10/6_edit_node1_pg_hba.PNG)
 
+Создадим директории для хранения наших бэкапов:
+
+ `$ mkdir /home/backup`  
+ `$ mkdir /home/backup/node1`  
+ `$ mkdir /home/backup/node2`  
+ 
+Напишем небольшие скрипты для выполнения бэкапа:
+
+`#!/bin/bash  
+NOW=$(date +'%d-%m-%Y'_'%H:%M:%S')  
+DATA='%m-%d-%Y'  
+pg_basebackup -X stream -v -h 10.128.0.5 -U postgres -D /home/backup/node1/node1_$NOW`  
+
+ 
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
 https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
