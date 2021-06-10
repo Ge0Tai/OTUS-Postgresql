@@ -155,6 +155,24 @@
 `select * from t_node1;`  
 `select * from t_node2;`
 
+И... ничего не получаем - таблицы пустые!
+
+Почему так произошло? Причина - параметр <b>copy_data = false</b>:
+
+>copy_data (boolean)  
+Определяет, должны ли копироваться существующие данные в публикациях, на которые оформляется подписка, сразу после начала репликации. Значение по умолчанию — true.
+
+<i>Т.е. этот параметр сообщает - нужно ли копировать существующие данные (те, которые были в таблицах до создания подписки)</i>
+
+Пересоздадим наши подписки с условием получения всех данных:
+
+`drop subscription t_node1_3_sub;`  
+`drop subscription t_node2_3_sub;`   
+
+`CREATE SUBSCRIPTION t_node1_3_sub CONNECTION 'host=10.128.0.5 port=5432 user=postgres password=otus123 dbname=nodedb1' PUBLICATION t_node1_pub WITH (copy_data = true);`  
+`CREATE SUBSCRIPTION t_node2_3_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2' PUBLICATION t_node2_pub WITH (copy_data = true);`  
+
+![](pics/dz10/5_recreate_subs.PNG)
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
