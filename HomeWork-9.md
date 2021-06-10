@@ -182,7 +182,7 @@ max_parallel_maintenance_workers = 1</i>
 
 <b>ИТОГ:</b>
 
-| Left-Aligned  | TPS (Default)   | TPS (PGTune) |
+| Time          | TPS (Default)   | TPS (PGTune) |
 | :------------ |:---------------:| ------------:|
 | OLTP          |  256.05         |  <b>354.47</b> |
 | DWH           | <b>9335.38</b>         |      9163.93 |
