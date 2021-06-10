@@ -118,7 +118,25 @@
 Как видим, логическая (перекрёстная) репликация между <b>node1</b> и <b>node2</b> работает.  
 Теперь переходим к третьему узлу - <b>node3</b>.
 
-5.
+5. Прежде чем подписаться, необходимо создать объекты - логическая репликация не работает с <b>DDL</b>. Пробуем подписаться без создания таблиц:
+
+ `CREATE SUBSCRIPTION t_node1_3_sub CONNECTION 'host=10.128.0.5 port=5432 user=postgres password=otus123 dbname=nodedb1' PUBLICATION t_node1_pub WITH (copy_data = false);`
+ 
+Как видим, получаем ошибку, что таблица (<b>relation</b>) не существует:
+
+![](pics/dz10/5_not_relation.PNG)
+
+Создадим таблицы и оформим подписку:
+
+`create table t_node1(id integer, mesg varchar(50));` 
+ 
+`create table t_node2(id integer, mesg varchar(50));`
+
+`CREATE SUBSCRIPTION t_node1_3_sub CONNECTION 'host=10.128.0.5 port=5432 user=postgres password=otus123 dbname=nodedb1' PUBLICATION t_node1_pub WITH (copy_data = false);`
+
+`CREATE SUBSCRIPTION t_node2_3_sub CONNECTION 'host=10.128.0.6 port=5432 user=postgres password=otus123 dbname=nodedb2' PUBLICATION t_node2_pub WITH (copy_data = false);`
+
+![](pics/dz10/5_not_relation.PNG)
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
