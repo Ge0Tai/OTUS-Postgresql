@@ -95,6 +95,14 @@
 | :------------ |:---------------|
 | `insert into t_node1 values (1, 'Строка в таблице t_node1 - 1');`         |  `insert into t_node2 values (1, 'Строка в таблице t_node2 - 1');`        |
 
+Сделаем запрос к обоим таблицам и убедимся, что данные, доступные на двух узлах, идентичные:
+
+| <b>node1</b>          | <b>node2</b>  |
+| :------------: |
+| select * from t_node1 a, t_node2 b  
+  where  
+  a.id = b.id; |
+
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ
