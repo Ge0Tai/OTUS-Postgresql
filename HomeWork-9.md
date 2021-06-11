@@ -3,7 +3,7 @@
 1. Установим 13-ю версию PostgreSQL:  
  `sudo apt update`  
  `sudo apt -y upgrade`  
- `sudo apt -y install vim bash-completion wget`  
+ `sudo apt -y install vim mc bash-completion wget`  
  
  ### Create the file repository configuration:
  `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
