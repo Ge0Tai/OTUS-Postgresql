@@ -222,7 +222,10 @@
 
 ![](pics/dz10/6_bck2.PNG)
 
-### hot_standby
+### hot replication
+
+Передача wal на реплику (node4Slave)
+
 
 7. На отдельном узле (<b>node4</b>) создадим слэйв нашего третьего узла (<b>node3</b>) с возможностью чтения (<i>hot_standby</i>):
 
@@ -298,4 +301,4 @@ https://habr.com/ru/company/postgrespro/blog/489308/  //репликационн
 https://postgrespro.ru/docs/postgresql/12/sql-createsubscription  //create subscription  
 https://eax.me/postgresql-replication/ //потоковая репликация  
 https://postgrespro.ru/docs/postgresql/13/app-pgbasebackup //pg_basebackup  
-
+https://habr.com/ru/post/525308/ //PITR штатными средствами PostgreSQL
