@@ -230,6 +230,13 @@
 
 * подготовим наш мастер <b>node3</b>
 
+   - Изменим /etc/postgresql/13/main/pg_hba.conf, разрешив принимать соединения для работы <b>pg_basebackup</b> и <b>pg_rewind</b>:
+
+ `host    replication      postgres       10.128.0.8/24            md5`
+ `host    all              postgres       10.128.0.8/24            md5`
+ 
+ 
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
 https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
