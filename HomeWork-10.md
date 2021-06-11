@@ -285,6 +285,10 @@
 
 ![](pics/dz10/7_conn_db_slave.PNG)
 
+Сделаем выборку из таблиц на <b>node4Slave</b>:
+
+![](pics/dz10/7_select_tables_slave.PNG)
+
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
 https://habr.com/ru/company/postgrespro/blog/489308/  //репликационные идентификаторы  
