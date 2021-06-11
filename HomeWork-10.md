@@ -6,7 +6,7 @@
 * otus-node1 (Ubuntu 20.04, PostgreSQL 13)  
 * otus-node2 (Ubuntu 20.04, PostgreSQL 13)
 * otus-node3 (Ubuntu 20.04, PostgreSQL 13)
-* otus-repl (Ubuntu 20.04, PostgreSQL 13)
+* otus-node4Slave (Ubuntu 20.04, PostgreSQL 13)
 
  
 1. Настроим логическую репликацию. Создадим БД и таблицы в <b>nodedb1</b> и <b>nodedb2</b>:
