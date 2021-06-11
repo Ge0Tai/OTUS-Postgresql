@@ -248,6 +248,10 @@
 * подготовим <b>slave - node4</b>
 
   Изменим конфигурационные файлы аналогично мастеру (с учётом адресов).
+  
+ ![](pics/dz10/7_set_slave_pg_hba.conf.PNG)
+ 
+ ![](pics/dz10/7_set_slave_postgesql.conf.PNG)
  
  
 
