@@ -253,7 +253,37 @@
  
  ![](pics/dz10/7_set_slave_postgesql.conf.PNG)
  
+Останавливаем кластер <b>postgresql</b> на <b>node4Slave</b>
+
+ ![](pics/dz10/7_stop_slave.PNG)
  
+Удаляем папку с файлами данных <b>postgresql</b>:
+
+ `sudo -s`
+ `rm -rf /var/lib/postgresql/13/main`
+ 
+Подключаемся пользователем <b>postgres</b>, создаём папку <b>main</b> и копируем данные с мастера:
+
+ `su - postgres`
+ `mkdir /var/lib/postgresql/13/main`
+ 
+Копируем данные с мастера:
+ 
+ `pg_basebackup -X stream -v -h 10.128.0.7 -U postgres -D /var/lib/postgresql/13/main`
+ 
+Стартуем кластер и получаем ошибку (неправильные права на каталог):
+
+![](pics/dz10/7_err_start_slave.PNG)
+
+Исправляем права на папку и стартуем кластер:
+
+`chmod -R 750 /var/lib/postgresql/13/main/`
+
+![](pics/dz10/7_start_slave.PNG)
+
+Подключимся на слэйве к БД:
+
+![](pics/dz10/7_conn_db_slave.PNG)
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
