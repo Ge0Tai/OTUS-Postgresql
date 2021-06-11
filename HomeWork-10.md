@@ -222,78 +222,9 @@
 
 ![](pics/dz10/6_bck2.PNG)
 
-### hot replication
-
-Передача wal на реплику (node4Slave)
+### hot replication (*)
 
 
-7. На отдельном узле (<b>node4</b>) создадим слэйв нашего третьего узла (<b>node3</b>) с возможностью чтения (<i>hot_standby</i>):
-
-* создадим новую ВМ <b>otus-node4</b> и установим <b>PostgreSQL</b>
-
-* подготовим наш мастер <b>node3</b>
-
-  - Изменим <b>/etc/postgresql/13/main/pg_hba.conf</b>, разрешив принимать соединения для работы <b>pg_basebackup</b> и <b>pg_rewind</b>:
-
- `host    replication      postgres       10.128.0.8/24            trust   //Чтобы не вводить пароль`  
- `host    all              postgres       10.128.0.8/24            trust`
- 
-  - Изменим <b>/etc/postgresql/13/main/postgresql.conf</b>:
-
- `listen_addresses = '*'  # слушаем все адреса`  
- `wal_level = hot_standby  # включает дополнительную информацию, необходимую для выполнения запросов на резервном сервере в режиме «только чтение»`  
- `synchronous_commit = on # исходим из требования надёжности, т.к. узлы находятся в одной сети и высокая нагрузка не предполагается`  
- `# !!! Нет в 13 версии wal_keep_segments = 10 # число файлов прошлых сегментов журнала, которые будут сохраняться в каталоге pg_wal, чтобы ведомый сервер мог выбрать их при потоковой репликации`  
- `archive_mode = off # значение по умолчанию (будем считать, что архивирование журналов нам не нужно, достаточно slave)`  
- `max_replication_slots = 20`
- 
-![](pics/dz10/7_set_master_postgesql.conf.PNG)
- 
-* подготовим <b>slave - node4</b>
-
-  Изменим конфигурационные файлы аналогично мастеру (с учётом адресов).
-  
- ![](pics/dz10/7_set_slave_pg_hba.conf.PNG)
- 
- ![](pics/dz10/7_set_slave_postgesql.conf.PNG)
- 
-Останавливаем кластер <b>postgresql</b> на <b>node4Slave</b>
-
- ![](pics/dz10/7_stop_slave.PNG)
- 
-Удаляем папку с файлами данных <b>postgresql</b>:
-
- `sudo -s`
- `rm -rf /var/lib/postgresql/13/main`
- 
-Подключаемся пользователем <b>postgres</b>, создаём папку <b>main</b> и копируем данные с мастера:
-
- `su - postgres`
- `mkdir /var/lib/postgresql/13/main`
- 
-Копируем данные с мастера:
- 
- `pg_basebackup -X stream -v -h 10.128.0.7 -U postgres -D /var/lib/postgresql/13/main`
- 
-Стартуем кластер и получаем ошибку (неправильные права на каталог):
-
-![](pics/dz10/7_err_start_slave.PNG)
-
-Исправляем права на папку и стартуем кластер:
-
-`chmod -R 750 /var/lib/postgresql/13/main/`
-
-![](pics/dz10/7_start_slave.PNG)
-
-Подключимся на слэйве к БД:
-
-![](pics/dz10/7_conn_db_slave.PNG)
-
-Сделаем выборку из таблиц на <b>node4Slave</b>:
-
-![](pics/dz10/7_select_tables_slave.PNG)
-
-8. 
 
 #### Ссылки:  
 https://serverfault.com/questions/1042838/how-to-connect-datagrip-to-postgres-on-google-compute-engine  //настраиваем доступ  
@@ -301,4 +232,6 @@ https://habr.com/ru/company/postgrespro/blog/489308/  //репликационн
 https://postgrespro.ru/docs/postgresql/12/sql-createsubscription  //create subscription  
 https://eax.me/postgresql-replication/ //потоковая репликация  
 https://postgrespro.ru/docs/postgresql/13/app-pgbasebackup //pg_basebackup  
-https://habr.com/ru/post/525308/ //PITR штатными средствами PostgreSQL
+https://habr.com/ru/post/525308/ //PITR штатными средствами PostgreSQL  
+https://postgrespro.ru/docs/postgresql/12/warm-standby  //п. 26.2.4
+
