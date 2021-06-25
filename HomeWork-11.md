@@ -167,6 +167,10 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/4_create_mysql_tbl.PNG)
 
+Загружаем данные таблицы:
+
+`gsutil -m cp -R gs://otus_taxi_bigdata /home/bucket`
+
 
 
 
