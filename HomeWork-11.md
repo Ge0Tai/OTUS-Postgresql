@@ -145,6 +145,6 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ','
 	dropoff_location)  
 FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DELIMITER ',' CSV HEADER;  
 
-
+![](pics/dz11/3_load_taxi_PG.PNG)
 
 
