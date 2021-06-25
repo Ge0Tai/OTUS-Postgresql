@@ -173,11 +173,11 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 Для загрузки данных в БД создадим скрипт:
 
-`#!/usr/bin/env bash  
-cd /home/bucket/otus_taxi_bigdata/  
-for f in *.csv  
-do  
-   mysql -e "USE chic_taxi LOAD DATA LOCAL INFILE '"$f"'INTO TABLE taxi_trips"  
-done`  
+`#!/usr/bin/env bash`  
+`cd /home/bucket/otus_taxi_bigdata/`  
+`for f in *.csv`  
+`do`  
+   `mysql -e "USE chic_taxi LOAD DATA LOCAL INFILE '"$f"'INTO TABLE taxi_trips"`  
+`done`  
 
 
