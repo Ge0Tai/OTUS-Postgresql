@@ -22,7 +22,7 @@
 
 ![](pics/dz11/3_create_DB_PG.PNG)
 
-(сразу же закачаем данные на вторую машину - <b>otus-bigdata</b>)
+(сразу же закачаем данные на вторую машину - <b>otus-bigdata</b>) - <i>не пошло (мало места)</i>
 
 ![](pics/dz11/3_download_second_server.PNG)
 
@@ -82,5 +82,9 @@
 FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ',' CSV HEADER;  
 
 ![](pics/dz11/3_download_data_PG.PNG)
+
+### Неудачный пример - мало данных. Возвращаемся на таблицу такси.
+
+
 
 
