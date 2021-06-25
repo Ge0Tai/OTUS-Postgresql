@@ -117,6 +117,33 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ','
 	dropoff_location text  
 );  
 
+Загружаем полученные <b>*.csv</b> файлы:
+
+>COPY taxi_trips(
+	unique_key, 
+	taxi_id, 
+	trip_start_timestamp, 
+	trip_end_timestamp, 
+	trip_seconds, 
+	trip_miles, 
+	pickup_census_tract, 
+	dropoff_census_tract, 
+	pickup_community_area, 
+	dropoff_community_area, 
+	fare, 
+	tips, 
+	tolls, 
+	extras, 
+	trip_total, 
+	payment_type, 
+	company, 
+	pickup_latitude, 
+	pickup_longitude, 
+	pickup_location, 
+	dropoff_latitude, 
+	dropoff_longitude, 
+	dropoff_location)
+FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DELIMITER ',' CSV HEADER;
 
 
 
