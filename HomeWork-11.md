@@ -87,6 +87,37 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ','
 
 `gsutil -m cp -R gs://otus_taxi_bigdata /home/bucket`
 
+Создаём БД <b>chic_taxi</b> и в ней таблицу <b>taxi_trips</b>:
+
+`create database chic_taxi;`  
+
+>create table taxi_trips (  
+	unique_key text,   
+	taxi_id text,   
+	trip_start_timestamp TIMESTAMP,   
+	trip_end_timestamp TIMESTAMP,   
+	trip_seconds bigint,   
+	trip_miles numeric,   
+	pickup_census_tract bigint,   
+	dropoff_census_tract bigint,   
+	pickup_community_area bigint,   
+	dropoff_community_area bigint,   
+	fare numeric,   
+	tips numeric,   
+	tolls numeric,   
+	extras numeric,   
+	trip_total numeric,   
+	payment_type text,   
+	company text,   
+	pickup_latitude numeric,   
+	pickup_longitude numeric,  
+	pickup_location text,  
+	dropoff_latitude numeric,   
+	dropoff_longitude numeric,   
+	dropoff_location text  
+);  
+
+
 
 
 
