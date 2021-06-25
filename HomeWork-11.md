@@ -55,4 +55,32 @@
 	
 ![](pics/dz11/3_create_table_crime_PG.PNG)
 
+Теперь загрузим данные с помощью <b>SQL COPY</b>:
+
+>COPY crime(unique_key,  
+	case_number,  
+	date,  
+	block,  
+	iucr,  
+	primary_type,  
+	description,  
+	location_description,  
+	arrest,  
+	domestic,  
+	beat,  
+	district,  
+	ward,  
+	community_area,  
+	fbi_code,  
+	x_coordinate,  
+	y_coordinate,  
+	year,  
+	updated_on,  
+	latitude,  
+	longitude,  
+	location)  
+FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket/*.csv | cat' DELIMITER ',' CSV HEADER;  
+
+
+
 
