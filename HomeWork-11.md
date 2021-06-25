@@ -24,3 +24,5 @@
 
 (сразу же закачаем данные на вторую машину - <b>otus-bigdata</b>)
 
+![](pics/dz11/3_download_second_server.PNG)
+
