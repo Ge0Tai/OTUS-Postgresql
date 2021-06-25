@@ -85,6 +85,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ','
 
 ### Неудачный пример - мало данных. Возвращаемся на таблицу такси.
 
+`gsutil -m cp -R gs://otus_taxi_bigdata /home/bucket`
+
 
 
 
