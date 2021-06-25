@@ -51,4 +51,8 @@
 	latitude double precision,  
 	longitude double precision,  
 	location text  
-	);  
+	); 
+	
+![](pics/dz11/3_create_table_crime_PG.PNG)
+
+
