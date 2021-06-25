@@ -14,3 +14,11 @@
 
 ![](pics/dz11/3_upload_bucket_to_VM.PNG)
 
+Используем данные из <i>chicago_crime</i>:
+
+`gsutil -m cp -R gs://chic_crime_bucket /home/bucket`
+
+Скачаем данные в <b>csv</b>, создадим БД <b>chic_crime</b> и подсоеденимся к ней:
+
+![](pics/dz11/3_create_DB_PG.PNG)
+
