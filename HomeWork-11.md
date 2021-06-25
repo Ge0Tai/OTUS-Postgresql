@@ -79,7 +79,7 @@
 	latitude,  
 	longitude,  
 	location)  
-FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket/*.csv | cat' DELIMITER ',' CSV HEADER;  
+FROM PROGRAM 'awk FNR-1 /home/bucket/chic_crime_bucket*.csv | cat' DELIMITER ',' CSV HEADER;  
 
 
 
