@@ -26,3 +26,29 @@
 
 ![](pics/dz11/3_download_second_server.PNG)
 
+Создадим таблицу <b>crime</b> в БД <b>chic_crime</b>:
+
+>create table crime (  
+	unique_key integer,  
+	case_number text,  
+	date timestamp,  
+	block text,  
+	iucr text,  
+	primary_type text,  
+	description text,  
+	location_description text,  
+	arrest boolean,  
+	domestic boolean,  
+	beat integer,  
+	district integer,  
+	ward integer,  
+	community_area integer,  
+	fbi_code text,  
+	x_coordinate double precision,  
+	y_coordinate double precision,  
+	year integer,  
+	updated_on timestamp,  
+	latitude double precision,  
+	longitude double precision,  
+	location text  
+	);  
