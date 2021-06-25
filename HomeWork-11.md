@@ -147,4 +147,20 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/3_load_taxi_PG.PNG)
 
+4. Подготовим аналогичный по конфигурации сервер и установим на него <b>MySQL</b>:
+
+`sudo apt update`  
+
+`sudo apt install mysql-server mysql-client`
+
+`sudo mysql_secure_installation`
+
+<i>Пароль <b>root</b> - <b>postgres</b></i>
+
+`create database chic_taxi;`
+
+`use chic_taxi`
+
+
+
 
