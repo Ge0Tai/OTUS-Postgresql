@@ -161,6 +161,12 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 `use chic_taxi`
 
+![](pics/dz11/4_create_mysql.PNG)
+
+Создаём таблицу:
+
+![](pics/dz11/4_create_mysql_tbl.PNG)
+
 
 
 
