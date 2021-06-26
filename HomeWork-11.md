@@ -171,7 +171,7 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 `gsutil -m cp -R gs://otus_taxi_bigdata /home/bucket`
 
-Для загрузки данных в БД создадим скрипт:
+Для загрузки данных в БД создадим скрипт (<b>load.sh</b>):
 
 `#!/usr/bin/env bash`  
 `cd /home/bucket/otus_taxi_bigdata/`  
@@ -191,6 +191,10 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 `mysql> SHOW GLOBAL VARIABLES LIKE 'local_infile';  //Проверим`
 
 ![](pics/dz11/4_set_mysql1.png)
+
+Запускаем скрипт загрузки:
+
+`# ./load.sh`
 
 После завершения загрузки проверим количество записей:
 
