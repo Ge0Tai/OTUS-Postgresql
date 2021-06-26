@@ -211,9 +211,4 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/4_select_mysql.png)
 
-Не зашло... Меняем параметр <b>innodb_data_file_path</b>:
-
-![](pics/dz11/4_err_select_mysql.png)
-
-![](pics/dz11/4_set_innodb.png)
 
