@@ -182,6 +182,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 Настроим <b>MySQL</b>:
 
+![](pics/dz11/4_set_mysql.png)
+
 `mysql> SET GLOBAL local_infile=1;`
 
 ![](pics/dz11/4_set_mysql1.png)
