@@ -192,4 +192,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/4_set_mysql1.png)
 
+После завершения загрузки проверим количество записей:
+
+![](pics/dz11/4_download_mysql.png)
+
 
