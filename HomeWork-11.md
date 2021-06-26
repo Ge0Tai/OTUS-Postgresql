@@ -177,7 +177,13 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 `cd /home/bucket/otus_taxi_bigdata/`  
 `for f in *.csv`  
 `do`  
-   `mysql -uroot --local-infile chic_taxi -e "LOAD DATA INFILE '"$f"'INTO TABLE taxi_trips FIELDS TERMINATED BY ',' LINES TERMINATED BY '/n' IGNORE 1 ROWS;"`  
-`done`  
+   `mysql -uroot --local-infile chic_taxi -e "LOAD DATA LOCAL INFILE '"$f"'INTO TABLE taxi_trips FIELDS TERMINATED BY ',' IGNORE 1 ROWS;"`  
+`done` 
+
+Настроим <b>MySQL</b>:
+
+`mysql> SET GLOBAL local_infile=1;`
+
+![](pics/dz11/4_set_mysql1.png)
 
 
