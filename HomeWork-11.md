@@ -188,6 +188,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 `mysql> SET GLOBAL local_infile=1;`
 
+`mysql> SHOW GLOBAL VARIABLES LIKE 'local_infile';  //Проверим`
+
 ![](pics/dz11/4_set_mysql1.png)
 
 
