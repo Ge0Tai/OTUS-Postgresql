@@ -201,7 +201,7 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 `mysql> set profiling=1;`
 
 `SELECT payment_type, round(sum(tips)/sum(trip_total)*100, 0) + 0 as tips_percent, count(*) as c`  
-`FROM 'bigquery-public-data.chicago_taxi_trips.taxi_trips'`   
+`FROM taxi_trips`   
 `group by payment_type`  
 `order by 3;`
 
