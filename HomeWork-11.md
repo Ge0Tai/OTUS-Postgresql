@@ -205,3 +205,4 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 `group by payment_type`  
 `order by 3;`
 
+![](pics/dz11/4_select_mysql.png)
