@@ -215,3 +215,7 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/5_prepare_postgres.PNG)
 
+Время выполнения <b>17 минут 47 секунд</b>:
+
+![](pics/dz11/5_result_psql.PNG)
+
