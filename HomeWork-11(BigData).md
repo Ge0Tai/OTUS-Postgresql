@@ -225,7 +225,11 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 Применяем параметры, перегружаем сервер и запускаем запрос повторно:
 
+![](pics/dz11/5_result2_psql.PNG)
 
+Время выполнения <b>13 минут 40 секунд</b>
+
+Разница в скорости выполнения запроса около <b>25%</b>.
 
 ### Ссылки
 http://pgconfigurator.cybertec.at/ - продвинутый конфигуратор
