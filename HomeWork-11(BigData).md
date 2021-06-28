@@ -232,5 +232,5 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 Разница в скорости выполнения запроса около <b>25%</b>.
 
 ### Ссылки
-http://pgconfigurator.cybertec.at/ - продвинутый конфигуратор
+http://pgconfigurator.cybertec.at/ - продвинутый конфигуратор  
 https://pgtune.leopard.in.ua/#/ - конфигуратор
