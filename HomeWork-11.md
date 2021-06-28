@@ -223,6 +223,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/5_set_psql.conf.PNG)
 
+Применяем параметры, перегружаем сервер и запускаем запрос повторно:
+
 
 
 ### Ссылки
