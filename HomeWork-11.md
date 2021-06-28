@@ -219,7 +219,9 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/5_result_psql.PNG)
 
-Внесём изменения в [конфигурацию](http://pgconfigurator.cybertec.at/) из расчёта того, что имеем практически не обновляемую БД с 90% транзакци просто читают (не изменяют данные):
+Внесём изменения в [конфигурацию](http://pgconfigurator.cybertec.at/) из расчёта того, что имеем практически не обновляемую БД с 90% транзакций, которые просто читают (не изменяют данные):
+
+![](pics/dz11/5_set_psql.conf.PNG)
 
 
 
