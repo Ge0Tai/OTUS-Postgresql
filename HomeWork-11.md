@@ -211,4 +211,7 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/4_select_mysql.png)
 
+5. Подключимся к <b>PostgreSQL</b> и запустим запрос:
+
+![](pics/dz11/5_prepare_postgres.PNG)
 
