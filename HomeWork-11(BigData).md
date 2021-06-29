@@ -211,6 +211,10 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/4_select_mysql.png)
 
+#### Проблема:
+
+Этот запрос (с <b>grop by</b>) выполнить так и не удалось. Возможная [причина](https://bugs.mysql.com/bug.php?id=96497). И хотя параметр <b>innodb_data_file_path</b> не ограничен (<i>ibdata1:12M:autoextend</i>) от ошибки <b>error 1114 (hy000): the table '/var/lib/mysql/tmp/*03 is full
+
 5. Подключимся к <b>PostgreSQL</b> и запустим запрос:
 
 ![](pics/dz11/5_prepare_postgres.PNG)
