@@ -213,7 +213,7 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 #### Проблема:
 
-Этот запрос (с <b>grop by</b>) выполнить так и не удалось. Возможная [причина](https://bugs.mysql.com/bug.php?id=96497) этой ошибки - <b><i>[ERROR] [MY-012263] [InnoDB] The Auto-extending innodb_system data file './ibdata1' is of a different size 768 pages (rounded down to MB) than specified in the .cnf file: initial 4096 pages, max 4096000 (relevan t if non-zero) pages!</i></b>. И хотя параметр <b>innodb_data_file_path</b> не ограничен (<i>ibdata1:10M:autoextend</i>):
+Этот запрос (с <b>group by</b>) выполнить так и не удалось. Возможная [причина](https://bugs.mysql.com/bug.php?id=96497) этой ошибки - <b><i>[ERROR] [MY-012263] [InnoDB] The Auto-extending innodb_system data file './ibdata1' is of a different size 768 pages (rounded down to MB) than specified in the .cnf file: initial 4096 pages, max 4096000 (relevan t if non-zero) pages!</i></b>. И хотя параметр <b>innodb_data_file_path</b> не ограничен (<i>ibdata1:10M:autoextend</i>):
 
 ![](pics/dz11/5_param_mysql.PNG)
 
