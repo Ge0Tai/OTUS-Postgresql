@@ -5,6 +5,10 @@
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
   
+  - создаём ДБ <b>demo</b>
+
+  ![](pics/dz12/1_create_DB.PNG)
+  
   - разворачиваем  (немного отредактируем файл дампа и запустим на выполнение)   
   
   ![](pics/dz12/1_edit_dump.PNG)
