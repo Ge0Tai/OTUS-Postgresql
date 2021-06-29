@@ -243,6 +243,18 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 Разница в скорости выполнения запроса около <b>25%</b>.
 
+6. Выполним запрос на обоих серверах:
+
+`select count(unique_key) from taxi_trips;`
+
+На <b>MySQL</b> время выполнения - <b>13 минут 31 секунда</b>:
+
+![](pics/dz11/6_select_mysql_2.PNG)
+
+На <b>PostgreSQL</b> - <b>13 минут 48 секунд</b>:
+
+![](pics/dz11/6_select_psql.PNG)
+
 ### Ссылки
 http://pgconfigurator.cybertec.at/ - продвинутый конфигуратор  
 https://pgtune.leopard.in.ua/#/ - конфигуратор
