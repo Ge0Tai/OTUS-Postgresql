@@ -221,6 +221,8 @@ FROM PROGRAM 'awk FNR-1 /home/bucket/otus_taxi_bigdata/taxi_trips*.csv | cat' DE
 
 ![](pics/dz11/6_error_select_mysql.PNG)
 
+Возможное решение проблемы описано [здесь](https://docs.oracle.com/cd/E17952_01/mysql-5.6-en/innodb-system-tablespace.html). Но не было времени проверить. В <b>п.6</b> попробуем запустить для сравнение запрос с <b>count</b>.
+
 5. Подключимся к <b>PostgreSQL</b> и запустим запрос:
 
 ![](pics/dz11/5_prepare_postgres.PNG)
