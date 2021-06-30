@@ -13,6 +13,8 @@
   
   ![](pics/dz12/1_edit_dump.PNG)
   
+  `psql --set ON_ERROR_STOP=on demo < /home/dump/demo-medium-en-20170815.sql`
+  
   ![](pics/dz12/1_start_dump.PNG)
 
 
