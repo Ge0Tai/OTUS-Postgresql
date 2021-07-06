@@ -19,7 +19,7 @@
 
 > QUERY PLAN                                   
 ---------------------------------------------------------------------------  
- Gather  (cost=1000.00..12907.50 rows=90 width=34)  
+> Gather  (cost=1000.00..12907.50 rows=90 width=34)  
    Workers Planned: 2  
    ->  Parallel Seq Scan on orders  (cost=0.00..11898.50 rows=38 width=34)  
          Filter: (id < 100)  
