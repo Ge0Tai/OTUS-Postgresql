@@ -13,21 +13,22 @@
 
 Посмотрим план выполнения запроса к этой таблице в отсутствии индекса:
 
-`explain select * from orders where id < 100;`
+`explain select * from orders where id < 120000;`
 
 Вывод следующий:
 
 > QUERY PLAN                                   
 > ---------------------------------------------------------------------------  
-> Gather  (cost=1000.00..12907.50 rows=90 width=34)  
+> Gather  (cost=1000.00..14882.00 rows=19835 width=34)  
    Workers Planned: 2  
-   ->  Parallel Seq Scan on orders  (cost=0.00..11898.50 rows=38 width=34)  
-         Filter: (id < 100)  
+   ->  Parallel Seq Scan on orders  (cost=0.00..11898.50 rows=8265 width=34)    
+         Filter: (id < 120000)   
 (4 rows)  
 
-![](pics/dz12/1_explain_noindex_1.PNG)
+Время выполнения запроса:
 
-Наблюдаем полное сканирование таблицы для выбора 99 строк.
+`otusGEO:5432 postgres@dbt=# select * from orders where id < 120000;`  
+`Time: 91.637 ms`
 
 Построим индекс по полю <b>id</b>:
 
@@ -35,13 +36,22 @@
 
 Повторим запрос:
 
-`explain select * from orders where id < 100;`
+`explain select * from orders where id < 120000;`
 
 > QUERY PLAN                                
 > --------------------------------------------------------------------------  
-> Index Scan using idx_ord_id on orders  (cost=0.42..4.44 rows=1 width=34)  
-   Index Cond: (id < 100)  
+> Index Scan using idx_ord_id on orders  (cost=0.42..729.54 rows=19835 width=34)  
+   Index Cond: (id < 120000)  
 (2 rows)  
+
+Время выполнения запроса:
+
+`otusGEO:5432 postgres@dbt=# select * from orders where id < 120000;`  
+`Time: 21.736 ms`
+
+![](pics/dz12/1_explain_noind_ind.PNG)
+
+
 
 2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
