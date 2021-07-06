@@ -2,14 +2,14 @@
 
 1. Создадим БД <b>dbt</b> с таблицей <b>orders</b> и заполним её данными:
 
-`insert into orders(id, user_id, order_date, status, some_text)  
-select generate_series, (random() * 70), date'2019-01-01' + (random() * 300)::int as order_date  
-        , (array['returned', 'completed', 'placed', 'shipped'])[(random() * 4)::int]  
-        , concat_ws(' ', (array['go', 'space', 'sun', 'London'])[(random() * 5)::int]  
-            , (array['the', 'capital', 'of', 'Great', 'Britain'])[(random() * 6)::int]  
-            , (array['some', 'another', 'example', 'with', 'words'])[(random() * 6)::int]  
-            )  
-from generate_series(100001, 1000000);`
+`insert into orders(id, user_id, order_date, status, some_text)`  
+`select generate_series, (random() * 70), date'2019-01-01' + (random() * 300)::int as order_date`  
+        `, (array['returned', 'completed', 'placed', 'shipped'])[(random() * 4)::int]`  
+        `, concat_ws(' ', (array['go', 'space', 'sun', 'London'])[(random() * 5)::int]`  
+            `, (array['the', 'capital', 'of', 'Great', 'Britain'])[(random() * 6)::int]`  
+            `, (array['some', 'another', 'example', 'with', 'words'])[(random() * 6)::int]`  
+            `)`  
+`from generate_series(100001, 1000000);`
 
 2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
