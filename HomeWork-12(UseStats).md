@@ -11,6 +11,20 @@
             `)`  
 `from generate_series(100001, 1000000);`
 
+Посмотрим план выполнения запроса к этой таблице в отсутствии индекса:
+
+`explain select * from orders where id < 100;`
+
+Вывод следующий:
+
+> QUERY PLAN                                   
+---------------------------------------------------------------------------  
+ Gather  (cost=1000.00..12907.50 rows=90 width=34)  
+   Workers Planned: 2  
+   ->  Parallel Seq Scan on orders  (cost=0.00..11898.50 rows=38 width=34)  
+         Filter: (id < 100)  
+(4 rows)  
+
 2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
