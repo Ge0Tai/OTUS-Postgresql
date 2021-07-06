@@ -27,6 +27,22 @@
 
 ![](pics/dz12/1_explain_noindex_1.PNG)
 
+Наблюдаем полное сканирование таблицы для выбора 99 строк.
+
+Построим индекс по полю <b>id</b>:
+
+`create index idx_ord_id on orders(id);`
+
+Повторим запрос:
+
+`explain select * from orders where id < 100;`
+
+> QUERY PLAN                                
+> --------------------------------------------------------------------------  
+> Index Scan using idx_ord_id on orders  (cost=0.42..4.44 rows=1 width=34)  
+   Index Cond: (id < 100)  
+(2 rows)  
+
 2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
