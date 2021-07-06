@@ -25,6 +25,8 @@
          Filter: (id < 100)  
 (4 rows)  
 
+![](pics/dz12/1_explain_noindex_1.PNG)
+
 2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
