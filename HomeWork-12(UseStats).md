@@ -51,9 +51,11 @@
 
 ![](pics/dz12/1_explain_noind_ind.PNG)
 
+2. #### Полнотекстовый поиск (FTS)
 
 
-2. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
+
+3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
   
