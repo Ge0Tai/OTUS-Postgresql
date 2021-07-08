@@ -53,7 +53,28 @@
 
 2. #### Полнотекстовый поиск (FTS)
 
+>Как гласит документация, для полнотекстового поиска требуется использовать типы tsvector и tsquery. 
+>Первый хранит текст документа в оптимизированном для поиска виде, второй — хранит полнотекстовый запрос.
+>Для поиска в PostgreSQL есть функции to_tsvector, plainto_tsquery, to_tsquery. Для ранжирования результатов есть ts_rank.
 
+Выполним запрос к нашей таблице - найти значения поля <b>some_text</b>, где встречается слово <b>London</b>:
+
+`SELECT some_text, to_tsvector("some_text") @@ to_tsquery('London') FROM orders;`
+
+![](pics/dz12/2_tsvector_noind_nocolumn.PNG)
+
+otusGEO:5432 postgres@dbt=# SELECT some_text, to_tsvector("some_text") @@ to_tsquery('London') FROM orders;  
+Time: 4228.042 ms (00:04.228)  
+otusGEO:5432 postgres@dbt=# explain select some_text, to_tsvector("some_text") @@ to_tsquery('London') FROM orders;  
+                                   QUERY PLAN                                    
+---------------------------------------------------------------------------------  
+ Gather  (cost=1000.00..290398.50 rows=900000 width=15)  
+   Workers Planned: 2  
+   ->  Parallel Seq Scan on orders  (cost=0.00..199398.50 rows=375000 width=15)  
+ JIT:  
+   Functions: 2  
+   Options: Inlining false, Optimization false, Expressions true, Deforming true  
+(6 rows)  
 
 3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
