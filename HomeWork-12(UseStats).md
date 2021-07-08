@@ -81,7 +81,7 @@
 
 Построим индекс:
 
-'CREATE INDEX i_gin_st_ord ON dbt.orders USING GIN (some_text);`
+`CREATE INDEX i_gin_st_ord ON dbt.orders USING GIN (some_text);`
 
 >Для полнотекстового поиска PostgreSQL предлагает два индекса на выбор:  
 >
