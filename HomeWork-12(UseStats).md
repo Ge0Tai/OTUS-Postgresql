@@ -73,3 +73,5 @@
 #### Ссылки:  
 https://postgrespro.com/education/demodb - демо БД  
 https://eax.me/postgresql-full-text-search/ - основы FTS
+https://habr.com/ru/post/442170/ - хабр FTS
+
