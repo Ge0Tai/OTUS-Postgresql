@@ -64,7 +64,8 @@
 ![](pics/dz12/2_tsvector_noind_nocolumn.PNG)
 
 `otusGEO:5432 postgres@dbt=# SELECT some_text, to_tsvector("some_text") @@ to_tsquery('London') FROM orders;`  
-`Time: 4228.042 ms (00:04.228)`  
+`Time: 4228.042 ms (00:04.228)`   
+
 `otusGEO:5432 postgres@dbt=# explain select some_text, to_tsvector("some_text") @@ to_tsquery('London') FROM orders;`  
                                    `QUERY PLAN`                                    
 `---------------------------------------------------------------------------------`  
@@ -75,6 +76,16 @@
    `Functions: 2`  
    `Options: Inlining false, Optimization false, Expressions true, Deforming true`  
 `(6 rows)`  
+
+Время выполнения запроса около 4,2 сек. Видим, что запрос сканирует всю таблицу (т.к. нет индекса) и функция <b>to_tsvector</b> вызывается для каждой строки таблицы.
+
+Построим индекс:
+
+>Для полнотекстового поиска PostgreSQL предлагает два индекса на выбор:  
+>
+> * GIN — быстро ищет, но не слишком быстро обновляется. Отлично работает, если вы сравнительно редко меняете данные, по которым ищите;
+> * GiST — ищет медленнее GIN, зато очень быстро обновляется. Может лучше подходить для поиска по очень часто обновляемым данным;
+>Если сомневаетесь, берите GIN. Обычно все используют именно его. GiST же имеет смысл использовать при довольно экзотической нагрузке. Узнать чуть больше о кишочках работы >полнотекстового поиска поверх GIN и GiST можно здесь.
 
 3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
