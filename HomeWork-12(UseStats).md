@@ -229,6 +229,20 @@
 
 Предположим, что нас интересуют в основном только завершённые заказы - <b>completed</b>.
 
+Выполним запрос и получим план выполнения без индекса:
+
+![](pics/dz12/2_no_index_status.PNG)
+
+Построим частичный индекс только на интересующее нас значение:
+
+`CREATE INDEX idx_user_status_completed ON orders (user_id) WHERE  status = 'completed';`
+
+И повторим запрос:
+
+![](pics/dz12/2_index_status.PNG)
+
+Как видим - разница в скорости выполнения - почти в три раза.
+
 3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
   `wget https://edu.postgrespro.com/demo-medium-en.zip`
