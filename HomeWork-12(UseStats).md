@@ -116,35 +116,35 @@
 
 Результаты без индекса:
 
-`otusGEO:5432 postgres@dbt=# SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`
-`Time: 323.976 ms`
-`otusGEO:5432 postgres@dbt=# explain SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`
-                                               `QUERY PLAN`                                               
-`--------------------------------------------------------------------------------------------------------`
- `Gather  (cost=1000.00..120909.80 rows=19613 width=18)`
-   `Workers Planned: 2`
-   `->  Parallel Seq Scan on orders  (cost=0.00..117948.50 rows=8172 width=18)`
-         `Filter: ((id > 756000) AND (id < 856000) AND (some_text_lexeme @@ to_tsquery('London'::text)))`
- `JIT:`
-   `Functions: 4`
-   `Options: Inlining false, Optimization false, Expressions true, Deforming true`
-`(7 rows)`
-`Time: 1.600 ms`
+`otusGEO:5432 postgres@dbt=# SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`  
+`Time: 323.976 ms`  
+`otusGEO:5432 postgres@dbt=# explain SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`  
+                                               `QUERY PLAN`                                                 
+`--------------------------------------------------------------------------------------------------------`  
+ `Gather  (cost=1000.00..120909.80 rows=19613 width=18)`  
+   `Workers Planned: 2`  
+   `->  Parallel Seq Scan on orders  (cost=0.00..117948.50 rows=8172 width=18)`  
+         `Filter: ((id > 756000) AND (id < 856000) AND (some_text_lexeme @@ to_tsquery('London'::text)))`  
+ `JIT:`  
+   `Functions: 4`  
+   `Options: Inlining false, Optimization false, Expressions true, Deforming true`  
+`(7 rows)`  
+`Time: 1.600 ms`  
 
 Теперь тоже самое, но с использованием индекса:
 
-`otusGEO:5432 postgres@dbt=# SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`
-`Time: 219.136 ms`
-`otusGEO:5432 postgres@dbt=# explain SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`
-                                            `QUERY PLAN`                                            
-`--------------------------------------------------------------------------------------------------`
- `Gather  (cost=1000.42..17682.35 rows=19613 width=18)`
-   `Workers Planned: 2`
-   `->  Parallel Index Scan using idx_id_order on orders  (cost=0.42..14721.05 rows=8172 width=18)`
-         `Index Cond: ((id > 756000) AND (id < 856000))`
-         `Filter: (some_text_lexeme @@ to_tsquery('London'::text))`
-`(5 rows)`
-`Time: 0.847 ms`
+`otusGEO:5432 postgres@dbt=# SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`  
+`Time: 219.136 ms`  
+`otusGEO:5432 postgres@dbt=# explain SELECT id, some_text from orders where some_text_lexeme @@ to_tsquery('London') and id > 756000 and id < 856000;`  
+                                            `QUERY PLAN`                                              
+`--------------------------------------------------------------------------------------------------`  
+ `Gather  (cost=1000.42..17682.35 rows=19613 width=18)`  
+   `Workers Planned: 2`  
+   `->  Parallel Index Scan using idx_id_order on orders  (cost=0.42..14721.05 rows=8172 width=18)`  
+         `Index Cond: ((id > 756000) AND (id < 856000))`  
+         `Filter: (some_text_lexeme @@ to_tsquery('London'::text))`  
+`(5 rows)`  
+`Time: 0.847 ms`  
 
 Разница почти в 1,8 раза.
 
