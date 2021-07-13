@@ -158,14 +158,14 @@
 
 Смотрим время выполнения запроса и <b>explain</b>:
 
-`Time: 284.946 ms`
-`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`
-                                      `QUERY PLAN`                                       
-`---------------------------------------------------------------------------------------`
- `Seq Scan on orders  (cost=0.00..31136.00 rows=455740 width=12)`
-   `Filter: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-06-01'::date))`
-`(2 rows)`
-`Time: 0.537 ms`
+`Time: 284.946 ms`  
+`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`  
+                                      `QUERY PLAN`                                         
+`---------------------------------------------------------------------------------------`  
+ `Seq Scan on orders  (cost=0.00..31136.00 rows=455740 width=12)`  
+   `Filter: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-06-01'::date))`  
+`(2 rows)`  
+`Time: 0.537 ms`  
 
 Построим составной индекс и повторим запрос:
 
@@ -173,42 +173,42 @@
 
 Интересно, что запрос с использованием индекса выполнялся по времени, почти столько же (наблюдается незначительный прирост):
 
-`otusGEO:5432 postgres@dbt=# create index idx_ord_order_date_status on orders(order_date, status);`
-`CREATE INDEX`
-`Time: 1267.204 ms (00:01.267)`
-`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`
-`Time: 217.426 ms`
-`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`
-                                              `QUERY PLAN`                                               
-`-------------------------------------------------------------------------------------------------------`
- `Index Only Scan using idx_ord_order_date_status on orders  (cost=0.42..10757.02 rows=455830 width=12)`
-   `Index Cond: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-06-01'::date))`
-`(2 rows)`
+`otusGEO:5432 postgres@dbt=# create index idx_ord_order_date_status on orders(order_date, status);`  
+`CREATE INDEX`  
+`Time: 1267.204 ms (00:01.267)`  
+`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`  
+`Time: 217.426 ms`  
+`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-06-01';`  
+                                              `QUERY PLAN`                                                 
+`-------------------------------------------------------------------------------------------------------`  
+ `Index Only Scan using idx_ord_order_date_status on orders  (cost=0.42..10757.02 rows=455830 width=12)`  
+   `Index Cond: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-06-01'::date))`  
+`(2 rows)`  
 
 Связано это с большим объёмом выводимых данных (фулскан почти не устапает выбору по индексу). А если сузить диапазон поиска, то разница в скорости очевидна (в 3,5 раза):
 
-`otusGEO:5432 postgres@dbt=# drop index if exists idx_ord_order_date_status;`
-`DROP INDEX`
-`Time: 3.479 ms`
-`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`
-`Time: 141.748 ms`
-`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`
-                                      `QUERY PLAN`                                       
-`---------------------------------------------------------------------------------------`
- `Seq Scan on orders  (cost=0.00..31136.00 rows=92815 width=12)`
-   `Filter: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-02-01'::date))`
-`(2 rows)`
-`Time: 0.561 ms`
-`otusGEO:5432 postgres@dbt=# create index idx_ord_order_date_status on orders(order_date, status);`
-`CREATE INDEX`
-`Time: 1234.181 ms (00:01.234)`
-`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`
-`Time: 43.825 ms`
-`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`
-                                             `QUERY PLAN`                                              
-`-----------------------------------------------------------------------------------------------------`
- `Index Only Scan using idx_ord_order_date_status on orders  (cost=0.42..2194.51 rows=92904 width=12)`
-   `Index Cond: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-02-01'::date))`
+`otusGEO:5432 postgres@dbt=# drop index if exists idx_ord_order_date_status;`  
+`DROP INDEX`  
+`Time: 3.479 ms`  
+`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`  
+`Time: 141.748 ms`  
+`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`  
+                                      `QUERY PLAN`                                         
+`---------------------------------------------------------------------------------------`  
+ `Seq Scan on orders  (cost=0.00..31136.00 rows=92815 width=12)`  
+   `Filter: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-02-01'::date))`  
+`(2 rows)`  
+`Time: 0.561 ms`  
+`otusGEO:5432 postgres@dbt=# create index idx_ord_order_date_status on orders(order_date, status);`  
+`CREATE INDEX`  
+`Time: 1234.181 ms (00:01.234)`  
+`otusGEO:5432 postgres@dbt=# select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`  
+`Time: 43.825 ms`  
+`otusGEO:5432 postgres@dbt=# explain select order_date, status from orders where order_date between date'2019-01-01' and date'2019-02-01';`  
+                                             `QUERY PLAN`                                                
+`-----------------------------------------------------------------------------------------------------`  
+ `Index Only Scan using idx_ord_order_date_status on orders  (cost=0.42..2194.51 rows=92904 width=12)`  
+   `Index Cond: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-02-01'::date))`  
 `(2 rows)`
 
 
