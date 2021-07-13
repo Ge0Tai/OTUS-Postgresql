@@ -264,6 +264,7 @@
 
 #### Ссылки:  
 https://postgrespro.com/education/demodb - демо БД  
+https://postgrespro.com/docs/postgrespro/10/apjs02.html - схема БД  
 https://eax.me/postgresql-full-text-search/ - основы FTS
 https://habr.com/ru/post/442170/ - хабр FTS
 https://www.postgresql.org/docs/9.6/textsearch-indexes.html - GIN и GiST  
