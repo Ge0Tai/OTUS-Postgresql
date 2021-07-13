@@ -233,4 +233,5 @@
 https://postgrespro.com/education/demodb - демо БД  
 https://eax.me/postgresql-full-text-search/ - основы FTS
 https://habr.com/ru/post/442170/ - хабр FTS
-https://www.postgresql.org/docs/9.6/textsearch-indexes.html = GIN и GiST
+https://www.postgresql.org/docs/9.6/textsearch-indexes.html - GIN и GiST  
+https://postgrespro.ru/docs/postgrespro/13/sql-createindex  - составной индекс
