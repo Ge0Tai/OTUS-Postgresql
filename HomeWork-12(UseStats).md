@@ -213,6 +213,8 @@
 
 #### Индекс на часть таблицы
 
+>Если в команде присутствует предложение WHERE, она создаёт частичный индекс. Такой индекс содержит записи только для части таблицы, обычно более полезной для индексации, чем остальная таблица. Например, если таблица содержит информацию об оплаченных и неоплаченных счетах, при этом последних сравнительно немного, но именно эта часть таблицы наиболее востребована, то увеличить быстродействие можно, создав индекс только по этой части. Ещё одно возможное применение WHERE — добавив UNIQUE, обеспечить уникальность в подмножестве таблицы. Подробнее это рассматривается в [Разделе 11.8](https://postgrespro.ru/docs/postgrespro/13/indexes-partial).
+
 
 
 3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
@@ -237,4 +239,5 @@ https://postgrespro.com/education/demodb - демо БД
 https://eax.me/postgresql-full-text-search/ - основы FTS
 https://habr.com/ru/post/442170/ - хабр FTS
 https://www.postgresql.org/docs/9.6/textsearch-indexes.html - GIN и GiST  
-https://postgrespro.ru/docs/postgrespro/13/sql-createindex  - составной индекс
+https://postgrespro.ru/docs/postgrespro/13/sql-createindex  - индексы  
+https://postgrespro.ru/docs/postgrespro/13/indexes-partial - частичный индекс  
