@@ -211,6 +211,9 @@
    `Index Cond: ((order_date >= '2019-01-01'::date) AND (order_date <= '2019-02-01'::date))`  
 `(2 rows)`
 
+#### Индекс на часть таблицы
+
+
 
 3. Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
