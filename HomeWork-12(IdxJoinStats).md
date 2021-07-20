@@ -244,6 +244,61 @@
 Как видим - разница в скорости выполнения - почти в три раза.
 
 3. #### Соединения таблиц 
+
+Для эксперимента создадим 2 таблицы <b>cats</b> и <b>tomatoes</b>:
+
+`create table cats (color text, type_cat text);`
+
+`create table tomatoes (color text, type_tomato text);`
+
+И вставим в них данные:
+
+`insert into cats values ('red', 'Gav');`  
+`insert into cats values ('brown', 'Mau');`
+
+`insert into tomatoes values ('green', 'Beefsteak');`  
+`insert into tomatoes values ('blue', 'Pork');`
+
+Запрос с <b>left join</b>:
+
+`select * from cats c`   
+`left join tomatoes t`  
+`on c.color = t.color;`  
+
+<b>LEFT JOIN</b> выводит все значения из левой таблицы и пересечения значений (по ключу) с правой. В примере выше (по ключу <i>color</i>) пересечений нет. Поэтому будут выведены существующие значения из таблицы <b>cats</b> и <b>null</b> из <b>tomatoes</b>:
+
+![](pics/dz12/3_lj_1.PNG)
+
+Добавим запись в таблицу <b>cats</b>:
+
+`insert into cats values ('blue', 'Kar');`
+
+Теперь появился общий ключ в объединении наших таблиц - выбрано будет 3 строки из левой таблицы и 1 из правой:
+
+`select * from cats c`   
+`left join tomatoes t`  
+`on c.color = t.color;`
+
+![](pics/dz12/3_lj_2.PNG)
+
+Запрос с <b>right join</b> наоборот, вернёт все записи из правой таблицы и только те записи из левой, которые имеют общий ключ:
+
+![](pics/dz12/3_rj_1.PNG)
+
+Добавим запись в таблицу <b>tomatoes</b>:
+
+`insert into tomatoes values ('red', 'Omelet');`
+
+Теперь мы должны получить 3 строки (все строки правой таблицы) - слева будут выбраны 2 записи из левой таблицы (с общим ключом) и одна строка не будет ничего содержать (<b>null</b>):
+
+![](pics/dz12/3_rj_2.PNG)
+
+Запрос <b>inner join</b> - это внутреннее объединение (пересечение) значений, которые есть в обоих объединяемых таблицах. В нашем случае будет выведено 2 записи с ключами <b>red</b> и <b>blue</b>:
+
+![](pics/dz12/3_ij_1.PNG)
+
+
+4. #### Сбор статистики
  
 Подготовим [тренировочную БД](https://postgrespro.com/docs/postgrespro/13/demodb-bookings-installation):
   - скачиваем  
